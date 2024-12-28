@@ -9,7 +9,29 @@ li a {display: block;color: white;text-align: center;padding: 14px 16px;text-dec
 /* 鼠标悬停时的背景颜色变化 */
 li a:hover {background-color: #111;}
 /*fixed*/
-body {margin-top: 50px;height: 500px;}
+body {
+    margin-top: 60px;
+    height: 500px;
+    height: 90%;
+    width: 99%;
+    background-image: url('background.png'); /* 将这里替换为你实际想要的背景图片路径，也可以使用背景颜色，例如 background-color: #f0f0f0; */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+{
+    transform:translate(-50%, -50%);
+    width:200px;
+    height:150px;
+    border:1px solid rgba(0, 0, 0, 0.2); /* 半透明边框 */
+    background-color:rgba(255, 255, 255, 0.8); /* 半透明背景色*/
+    box-shadow:0 0 5px rgba(0, 0, 0, 0.3);
+    z-index:999;
+}
+.window-header {background-color: rgba(200, 200, 200, 0.6); /* 半透明头部背景色 */padding: 5px 10px;display: flex;justify-content: space-between;align-items: center;}
+.window-headers {background-color: rgba(247, 240, 240, 0.6); /* 半透明头部背景色 */padding: 5px 10px;justify-content: space-between;align-items: center;}
+#time-display {font-size: 24px;font-weight: bold;text-align: center;}
+#date-display {font-size: 20px;font-weight: bold;text-align: center;}
 </style>
 <body>
 <ul>
@@ -20,6 +42,31 @@ body {margin-top: 50px;height: 500px;}
 </ul>
 </body></head>
 <body>
-<h1>hello,world</h1>
-<a href="https://github.com/oneblockh">github</a>
+<h1 align="center">oneblockh的个人网站</h1>
+<div id="transparent-window" class="fixed-window"><div class="window-header">
+  <div class="window-headers"><h1>简介</h1><p>1</p><a href="https://github.com/oneblockh">github</a></div>
+  <div class="window-headers"><div id="date-display"></div><div id="time-display"></div></div>
+</div></div>
+<script>
+  /*时间*/function updateTime() {
+  const timeDisplay = document.getElementById('time-display');
+  const now = new Date();
+  const hours = now.getHours().toString().padStart(2, '0');
+  const minutes = now.getMinutes().toString().padStart(2, '0');
+  const seconds = now.getSeconds().toString().padStart(2, '0');
+  const timeString = `${hours}:${minutes}:${seconds}`;
+  timeDisplay.textContent = timeString;}
+  setInterval(updateTime, 1000);updateTime();
+  /*年月日*/
+  function updateDate() {
+    const dateDisplay = document.getElementById('date-display');
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = (now.getMonth() + 1).toString().padStart(2, '0');
+    const day = now.getDate().toString().padStart(2, '0');
+    const dateString = `${year}-${month}-${day}`;
+    dateDisplay.textContent = dateString;}
+    setInterval(updateDate, 1000);
+    updateDate();
+</script>
 </body><body><p style="color:blue;">.</p><a href="https://github.com/oneblockh/oneblockh.github.io/tree/main">关于网站项目</a><p style="color: red">by_oneblockh</p></body></html>
