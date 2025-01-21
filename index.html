@@ -1,19 +1,17 @@
 <html><title>oneblockh</title><meta charset="utf-8"><!页面>
 <head><style>
 /* 重置列表样式 */
-ul {list-style-type: none;margin: 0;padding: 0;overflow: hidden;background-color: #7f797903;position: fixed;top: 0px;left: 0px;width: 100%;}
+ul {list-style-type: none;margin: 0;padding: 0;overflow: hidden;background-color: #7f797903;/*position: fixed*/;top: 0px;left: 0px;width: 100%;}
 /* 设置列表项为横向排列 */
-li {float:left;}
+li {float:center;}
 /* 设置链接样式 */
 li a {display: block;color: white;text-align: center;padding: 14px 16px;text-decoration: none;}
 /* 鼠标悬停时的背景颜色变化 */
 li a:hover {background-color: #111;}
-/*fixed*/
 body {
     margin-top: 75px;
-    height: 500px;
-    height: 90%;
-    width: 99%;
+    height: 100%;
+    width: 100%;
     background-image: url('background.png'); /* 将这里替换为你实际想要的背景图片路径，也可以使用背景颜色，例如 background-color: #f0f0f0; */
     background-size: cover;
     background-position: center;
@@ -21,45 +19,89 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    position: fixed;
 }
-{
-    transform:translate(-50%, -50%);
-    width:200px;
-    height:150px;
-    border:1px solid rgba(0, 0, 0, 0.2); /* 半透明边框 */
-    background-color:rgba(255, 255, 255, 0.8); /* 半透明背景色*/
-    box-shadow:0 0 5px rgba(0, 0, 0, 0.3);
-    z-index:999;
-}
-.window{background-color: rgba(200, 200, 200, 0);padding: 25px 10px;display: flex;justify-content: space-between;align-items: center;width: 300px; height: 200px;margin: 1em auto 1em; }
+.window{background-color: rgba(200, 200, 200, 0);padding: 25px 10px;display: flex;justify-content: space-between;align-items: center;width: 700px; height: 200px;margin: 1em auto 1em; }
 .window-headers{background-color: rgba(247, 240, 240, 0.509); /* 半透明头部背景色 */padding: 5px 10px;justify-content: space-between;align-items: center;}
 .window-headerss{background-color: rgba(0, 0, 0, 0); }
+.window-txt{background-color: rgba(247, 240, 240, 0.509);justify-content: space-between;align-items: center;align: center;}
+.txt-circle{font-size:8px;display: inline-block;width: 28px;height: 15px;line-height: 11px;text-align: center;background-color: rgb(0, 0, 0,0.25);border: 2px solid black;}
 #time-display {font-size: 20px;font-weight: bold;text-align: center;}
 #date-display {font-size: 20px;font-weight: bold;text-align: center;}
-.obh-web{position: absolute;bottom: 0;width: 100%;justify-content: center;align-items: center;display: flex;}
+.obh-web{position: absolute;bottom: 0;color: #00000000;width: 100%;justify-content: center;align-items: center;display: flex; }
 </style>
 <body>
 <ul>
-<li><h1 style="color:rgb(94, 91, 91); font-size: 20px;">oneblockh的个人网站</h1></li>
-<li><a href="index.html" style="color:rgb(200, 200, 200);">主页</a></li>
-<li><a href="essay.html" style="color:rgb(200, 200, 200);">文章</a></li> 
+<li><h1 style="color:rgb(86, 85, 85); font-size: 20px;" align="center">oneblockh的个人网站</h1></li>
 </ul>
 </body></head>
 <body>
-<h1 align="center" style="color:rgb(0, 0, 0, 0);">oneblockh</h1>
-<h1 align="center">home</h1>
+<h1 align="center" style="color:rgb(0, 0, 0, 0);font-size: 5px;">.</h1>
 <div id="transparent-window" class="fixed-window"><div class="window" align="center">
   <div class="window-headers" align="center">
     <h1 style="font-size: 25px;">个人简介</h1>
     <h1 style="font-size: 20px;"><img src="obh.png" alt="oneblockh" width="50" height="50">oneblockh</h1>
-    <p>hello world</p><p>...</p>
+    <p class="txt-circle">mc玩家</p><span style="color:rgb(0, 0, 0, 0);">.</span><p class="txt-circle">学生</p><span style="color:rgb(0, 0, 0, 0);">.</span><p class="txt-circle">整活</p>
+    <p>hello world</p>
     <a href="https://github.com/oneblockh"><img src="github.png" alt="github" width="32" height="32">github</a>
     <a href="https://space.bilibili.com/3546635246242772"><img src="bilibili.png" alt="github" width="32" height="32">bilibili</a></div>
     <div class="window-headerss">
+      <p  style="color:rgb(0, 0, 0, 0); font-size: 3px;">.</p>
+      <div class="window-headers">
+        <h1 style="font-size: 16px;">经验</h1>
+        <table><tr><th>html</th><th>scratch</th><th>python</th></tr>
+               <tr><th>较熟练</th><th>老手</th><th>初级</th></tr>
+        </table>
+      </div>
+      <p style="color:rgb(0, 0, 0, 0); font-size: 3px;">.</p>
+      <div class="window-headers" style="font-size: 9px;">
+        <h1 style="font-size: 16px;">个人留言</h1>
+        <p>向前看，望向希望的光明。</p>
+        <p>不要看向花里胡哨的东西，应该做更好的自己。</p>
+        <p>不要看别人很厉害，其实实际上你也可以做到的。</p>
+      </div>
+    </div>
+    <div class="window-headers" style="font-size: 10px;">
+      <h1 style="font-size: 16px;">项目</h1>
+        <a href="https://oneblockh.github.io">个人网站</a>
+        <p>只</p>
+        <p>有</p>
+        <p>一</p>
+        <p>个</p>
+        <p>项</p>
+        <p>目</p>
+        <p>出</p>
+        <p>来</p>
+    </div>
+    <div class="window-headers" style="font-size: 10px;">
+      <h1 style="font-size: 16px;">资源</h1>
+        <p>暂</p>
+        <p>时</p>
+        <p>还</p>
+        <p>没</p>
+        <p>有</p>
+        <p>资</p>
+        <p>源</p>
+        <p>出</p>
+        <p>来</p>
+    </div>
+    <div class="window-headers" style="font-size: 10px;">
+      <h1 style="font-size: 16px;">文章</h1>
+      <p>暂</p>
+      <p>时</p>
+      <p>还</p>
+      <p>没</p>
+      <p>有</p>
+      <p>文</p>
+      <p>章</p>
+      <p>出</p>
+      <p>来</p>
+    </div>
+    <div class="window-header">
       <div class="window-headers"><div id="date-display"></div><div id="time-display"></div></div>
-      <p  style="color:rgb(0, 0, 0, 0); font-size: 3px;">1</p>
+      <p  style="color:rgb(0, 0, 0, 0); font-size: 3px;">.</p>
       <div class="window-headers" style="font-size: 10px;">
-        <h1 style="font-size: 12px;">网站历史</h1>
+        <h1 style="font-size: 15px;">网站历史</h1>
         <p>2025/1/？(敬请期待)</p>
         <p>2025/1/21主页改版2</p>
         <p>2024/12/31主页改版</p>
