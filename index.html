@@ -8,8 +8,8 @@ li {float:center;}
 li a {display: block;color: white;text-align: center;padding: 14px 16px;text-decoration: none;}
 /* 鼠标悬停时的背景颜色变化 */
 li a:hover {background-color: #111;}
+:root {--text-color: #333;--wh-color:rgba(247, 240, 240, 0.5);}
 body {
-    margin-top: 75px;
     height: 100%;
     width: 100%;
     background-image: url('background.png'); /* 将这里替换为你实际想要的背景图片路径，也可以使用背景颜色，例如 background-color: #f0f0f0; */
@@ -20,19 +20,25 @@ body {
     margin: 0;
     padding: 0;
     position: fixed;
+            
+    font-family: Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: background-color 0.5s ease, color 0.5s ease;
 }
 .window{background-color: rgba(200, 200, 200, 0);padding: 25px 10px;display: flex;justify-content: space-between;align-items: center;width: 700px; height: 200px;margin: 1em auto 1em; }
-.window-headers{background-color: rgba(247, 240, 240, 0.509); /* 半透明头部背景色 */padding: 5px 10px;justify-content: space-between;align-items: center;}
+.window-headers{background-color: var(--wh-color); /* 半透明头部背景色 */padding: 5px 10px;justify-content: space-between;align-items: center;}
 .window-headerss{background-color: rgba(0, 0, 0, 0); }
 .window-txt{background-color: rgba(247, 240, 240, 0.509);justify-content: space-between;align-items: center;align: center;}
 .txt-circle{font-size:8px;display: inline-block;width: 28px;height: 15px;line-height: 11px;text-align: center;background-color: rgb(0, 0, 0,0.25);border: 2px solid black;}
-#time-display {font-size: 20px;font-weight: bold;text-align: center;}
-#date-display {font-size: 20px;font-weight: bold;text-align: center;}
+#time-display {font-size: 25px;font-weight: bold;text-align: center;}
+#date-display {font-size: 15px;font-weight: bold;text-align: center;}
+.night-theme {--text-color: #f4f4f4;--wh-color:rgba(12, 11, 11, 0.5);}
 .obh-web{position: absolute;bottom: 0;color: #00000000;width: 100%;justify-content: center;align-items: center;display: flex; }
 </style>
 <body>
 <ul>
-<li><h1 style="color:rgb(86, 85, 85); font-size: 20px;" align="center">oneblockh的个人网站</h1></li>
+<li><h1 style="font-size: 20px;" align="center">oneblockh的个人网站</h1></li>
 </ul>
 </body></head>
 <body>
@@ -41,17 +47,18 @@ body {
   <div class="window-headers" align="center">
     <h1 style="font-size: 25px;">个人简介</h1>
     <h1 style="font-size: 20px;"><img src="obh.png" alt="oneblockh" width="50" height="50">oneblockh</h1>
-    <p class="txt-circle">mc玩家</p><span style="color:rgb(0, 0, 0, 0);">.</span><p class="txt-circle">学生</p><span style="color:rgb(0, 0, 0, 0);">.</span><p class="txt-circle">整活</p>
+    <p class="txt-circle">mc玩家</p>
+    <span style="color:rgb(0, 0, 0, 0);">.</span>
+    <p class="txt-circle">学生</p>
+    <span style="color:rgb(0, 0, 0, 0);">.</span>
+    <p class="txt-circle">整活</p>
     <p>hello world</p>
     <a href="https://github.com/oneblockh"><img src="github.png" alt="github" width="32" height="32">github</a>
     <a href="https://space.bilibili.com/3546635246242772"><img src="bilibili.png" alt="github" width="32" height="32">bilibili</a></div>
     <div class="window-headerss">
-      <p  style="color:rgb(0, 0, 0, 0); font-size: 3px;">.</p>
+      <p style="color:rgb(0, 0, 0, 0); font-size: 2px;">.</p>
       <div class="window-headers">
-        <h1 style="font-size: 16px;">经验</h1>
-        <table><tr><th>html</th><th>scratch</th><th>python</th></tr>
-               <tr><th>较熟练</th><th>老手</th><th>初级</th></tr>
-        </table>
+        <div id="time-display"></div><div id="date-display"></div>
       </div>
       <p style="color:rgb(0, 0, 0, 0); font-size: 3px;">.</p>
       <div class="window-headers" style="font-size: 9px;">
@@ -98,11 +105,12 @@ body {
       <p>来</p>
     </div>
     <div class="window-header">
-      <div class="window-headers"><div id="date-display"></div><div id="time-display"></div></div>
+      <div class="window-headers"><button onclick="toggleTheme()">切换主题</button></div>
       <p  style="color:rgb(0, 0, 0, 0); font-size: 3px;">.</p>
       <div class="window-headers" style="font-size: 10px;">
         <h1 style="font-size: 15px;">网站历史</h1>
-        <p>2025/1/？(敬请期待)</p>
+        <p>2025/1/?(敬请期待)</p>
+        <p>2025/1/22主页改版3</p>
         <p>2025/1/21主页改版2</p>
         <p>2024/12/31主页改版</p>
         <p>2024/12/21较大形成</p>
@@ -112,7 +120,8 @@ body {
     </div>
 </div></div>
 <script>
-  /*时间*/function updateTime() {
+  /*时间*/
+  function updateTime() {
   const timeDisplay = document.getElementById('time-display');
   const now = new Date();
   const hours = now.getHours().toString().padStart(2, '0');
@@ -132,5 +141,7 @@ body {
     dateDisplay.textContent = dateString;}
     setInterval(updateDate, 1000);
     updateDate();
+  /*黑白主题切换*/
+  function toggleTheme() {var body = document.body;body.classList.toggle('night-theme');}
 </script>
 </body><body><div class="obh-web"><p style="color:blue;">.</p><a href="https://github.com/oneblockh/oneblockh.github.io/tree/main">关于网站项目</a><p style="color: red">by_oneblockh</p></div></body></html>
