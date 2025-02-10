@@ -29,7 +29,6 @@ body {
 .window{background-color: rgba(200, 200, 200, 0);padding: 25px 10px;display: flex;justify-content: space-between;align-items: center;width: 648px; height: 300px;margin: 1em auto 1em; }
 .window-headers{background-color: var(--wh-color); /* 半透明头部背景色 */padding: 5px 10px;justify-content: space-between;align-items: center;}
 .window-headerss{background-color: rgba(0, 0, 0, 0); }
-.window-txt{background-color: rgba(247, 240, 240, 0.509);justify-content: space-between;align-items: center;align: center;}
 .txt-circle{font-size:8px;display: inline-block;width: 28px;height: 15px;line-height: 11px;text-align: center;background-color: rgb(0, 0, 0,0.25);border: 2px solid black;}
 #time-display {font-size: 25px;font-weight: bold;text-align: center;}
 #date-display {font-size: 15px;font-weight: bold;text-align: center;}
@@ -61,10 +60,10 @@ body {
 </div>
   <div class="window-headerss" style="width: 73%;">
       <div class="window-headers">
-        <button><a href="#" onclick="showPage('project'); return false;">项目</a></button>
-        <button><a href="#" onclick="showPage('resources'); return false;">资源</a></button>
-        <button><a href="#" onclick="showPage('updates'); return false;">动态</a></button>
-        <button><a href="#" onclick="showPage('essay'); return false;">文章</a></button>
+        <button href="#" onclick="showPage('project'); return false;">项目</button>
+        <button href="#" onclick="showPage('resources'); return false;">资源</button>
+        <button href="#" onclick="showPage('updates'); return false;">动态</button>
+        <button href="#" onclick="showPage('essay'); return false;">文章</button>
       </div>
       <p style="color:rgb(0, 0, 0, 0); font-size: 3px;">.</p>
       <div class="window-headers" style="font-size: 10px;">
@@ -91,15 +90,17 @@ body {
             <p>来</p>
           </section>
           <section id="updates"><h1 style="font-size: 16px;">动态</h1>
-          <a href="https://www.bilibili.com/opus/1026415330300264473?">例示标题</a>
-          <p>只</p>
-          <p>有</p>
-          <p>一</p>
-          <p>个</p>
-          <p>动</p>
-          <p>态</p>
-          <p>出</p>
-          <p>来</p>
+            <table border="1" style="width:95%">
+              <tr><th><a href="https://www.bilibili.com/opus/1026415330300264473?">例示标题</a></th><th style="color:rgb(0, 0, 0, 0);">...............</th></tr>
+              <tr><th style="color:rgb(0, 0, 0, 0);">.</th><th></th></tr>
+              <tr><th style="color:rgb(0, 0, 0, 0);">.</th><th></th></tr>
+              <tr><th style="color:rgb(0, 0, 0, 0);">.</th><th></th></tr>
+              <tr><th style="color:rgb(0, 0, 0, 0);">.</th><th></th></tr>
+              <tr><th style="color:rgb(0, 0, 0, 0);">.</th><th></th></tr>
+              <tr><th style="color:rgb(0, 0, 0, 0);">.</th><th></th></tr>
+              <tr><th style="color:rgb(0, 0, 0, 0);">.</th><th></th></tr>
+              <tr><th style="color:rgb(0, 0, 0, 0);">.</th><th></th></tr>
+              </table>
         </section>
         <section id="essay"><h1 style="font-size: 16px;">文章</h1>
           <p>暂</p>
@@ -114,8 +115,7 @@ body {
         </section>
       </div>
     </div>
-</div>
-</div>
+</div></div>
 <script>
   /*时间*/
   function updateTime() {
