@@ -17,23 +17,28 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     font-family: Arial, sans-serif;
+
     margin: 0;
     padding: 0;
-    position: fixed;
-            
+    position: fixed;       
     font-family: Arial, sans-serif;
     background-color: var(--background-color);
     color: var(--text-color);
     transition: background-color 0.5s ease, color 0.5s ease;
 }
 .window{background-color: rgba(200, 200, 200, 0);padding: 25px 10px;display: flex;justify-content: space-between;align-items: center;width: 648px; height: 300px;margin: 1em auto 1em; }
-.window-headers{background-color: var(--wh-color); /* 半透明头部背景色 */padding: 5px 10px;justify-content: space-between;align-items: center;transition: background-color 0.1s ease, color 0.2s ease;}
+.window-headers{background-color: var(--wh-color); /* 半透明头部背景色 */padding: 5px 10px;justify-content: space-between;align-items: center;transition: background-color 0.1s ease, color 0.2s ease;border-radius: 11px;}
 .window-headerss{background-color: rgba(0, 0, 0, 0); }
-.txt-circle{font-size:8px;display: inline-block;width: 28px;height: 15px;line-height: 11px;text-align: center;background-color: rgb(0, 0, 0,0.25);border: 2px solid black;}
+.txt-circle{font-size:8px;display: inline-block;width: 28px;height: 15px;line-height: 11px;text-align: center;background-color: rgb(0, 0, 0,0.25);border: 2px solid black;border-radius: 3px;}
 #time-display {font-size: 25px;font-weight: bold;text-align: center;}
 #date-display {font-size: 15px;font-weight: bold;text-align: center;}
 .night-theme {--text-color: #f4f4f4;--wh-color:rgba(12, 11, 11, 0.5);}
 .buttons:hover{font-size:15px;}
+section {display: none;opacity: 0;animation: fadeIn 1s ease forwards;}
+@keyframes fadeIn {to {opacity: 1;}}
+section:target {display: block;}
+.projectlists{max-width: 100%;max-height: 280px; /* 设置最大高度 */overflow-y: auto; /* 添加垂直滚动条 */;}
+table{border-radius: 3px;}
 .obh-web{position: absolute;bottom: 0;color: #00000000;width: 100%;justify-content: center;align-items: center;display: flex; }
 </style>
 <body>
@@ -41,9 +46,9 @@ body {
 </body></head>
 <body>
 <h1 align="center" style="color:rgb(0, 0, 0, 0);font-size: 5px;">.</h1>
-<div id="transparent-window" class="fixed-window"><div class="window" align="center">
+<div class="fixed-window"><div class="window" align="center">
   <div class="window-headerss"><div class="window-headers" align="center">
-    <h1 style="font-size: 20px;"><img src="obh.png" alt="oneblockh" width="50" height="50">oneblockh</h1>
+    <h1 style="font-size: 20px;"><img src="obh.png" alt="oneblockh" width="50" height="50" style="border-radius: 3px;">oneblockh</h1>
     <p class="txt-circle">mc玩家</p>
     <span style="color:rgb(0, 0, 0, 0);">.</span>
     <p class="txt-circle">学生</p>
@@ -55,27 +60,21 @@ body {
     <p style="color:rgb(0, 0, 0, 0); font-size: 2px;">.</p>
     <div class="window-headers"><div id="time-display"></div><div id="date-display"></div></div>
     <p style="color:rgb(0, 0, 0, 0); font-size: 3px;">.</p>
-    <div class="window-headers" style="font-size: 9px;"><button onclick="toggleTheme()"style="background-color:rgb(0, 0, 0, 0);color:var(--text-color);border: 1px solid var(--text-color);transition:color 0.5s ease;" class="buttons">切换主题</button></div>
+    <div class="window-headers" style="font-size: 9px;"><button onclick="toggleTheme()"style="background-color:rgb(0, 0, 0, 0);color:var(--text-color);border: 1px solid var(--text-color);transition:color 0.5s ease;border-radius: 3px;" class="buttons">切换主题</button></div>
 </div>
   <div class="window-headerss" style="width: 73%;">
       <div class="window-headers">
-        <button href="#" onclick="showPage('project'); return false;" style="background-color:rgb(0, 0, 0, 0);color:var(--text-color);border: 1px solid var(--text-color);transition:color 0.5s ease;" class="buttons">项目</button>
-        <button href="#" onclick="showPage('resources'); return false;" style="background-color:rgb(0, 0, 0, 0);color:var(--text-color);border: 1px solid var(--text-color);transition:color 0.5s ease;" class="buttons">资源</button>
-        <button href="#" onclick="showPage('updates'); return false;" style="background-color:rgb(0, 0, 0, 0);color:var(--text-color);border: 1px solid var(--text-color);transition:color 0.5s ease;" class="buttons">动态</button>
-        <button href="#" onclick="showPage('essay'); return false;" style="background-color:rgb(0, 0, 0, 0);color:var(--text-color);border: 1px solid var(--text-color);transition:color 0.5s ease;" class="buttons">文章</button>
+        <button href="#" onclick="showPage('project'); return false;" style="background-color:rgb(0, 0, 0, 0);color:var(--text-color);border: 1px solid var(--text-color);transition:color 0.5s ease;border-radius: 3px;" class="buttons">项目</button>
+        <button href="#" onclick="showPage('resources'); return false;" style="background-color:rgb(0, 0, 0, 0);color:var(--text-color);border: 1px solid var(--text-color);transition:color 0.5s ease;border-radius: 3px;" class="buttons">资源</button>
+        <button href="#" onclick="showPage('updates'); return false;" style="background-color:rgb(0, 0, 0, 0);color:var(--text-color);border: 1px solid var(--text-color);transition:color 0.5s ease;border-radius: 3px;" class="buttons">动态</button>
+        <button href="#" onclick="showPage('essay'); return false;" style="background-color:rgb(0, 0, 0, 0);color:var(--text-color);border: 1px solid var(--text-color);transition:color 0.5s ease;border-radius: 3px;" class="buttons">文章</button>
       </div>
       <p style="color:rgb(0, 0, 0, 0); font-size: 3px;">.</p>
-      <div class="window-headers" style="font-size: 10px;">
-            <section id="project"><h1 style="font-size: 16px;">项目</h1>
-            <a href="https://oneblockh.github.io">个人网站</a>
-            <p>只</p>
-            <p>有</p>
-            <p>一</p>
-            <p>个</p>
-            <p>项</p>
-            <p>目</p>
-            <p>出</p>
-            <p>来</p>
+      <div class="window-headers" style="font-size: 10px;height: 265px;"><div class="projectlists">
+          <section id="project"><h1 style="font-size: 16px;">项目</h1>
+            <table border="1" style="width:95%">
+              <tr><th><a href="https://oneblockh.github.io">个人网站</a></th></tr>
+            </table>
           </section>
          <section id="resources"><h1 style="font-size: 16px;">资源</h1>
             <p>暂</p>
@@ -90,16 +89,16 @@ body {
           </section>
           <section id="updates"><h1 style="font-size: 16px;">动态</h1>
             <table border="1" style="width:95%">
-              <tr><th><a href="https://www.bilibili.com/opus/1026415330300264473?">例示标题</a></th><th style="color:rgb(0, 0, 0, 0);">...............</th></tr>
-              <tr><th style="color:rgb(0, 0, 0, 0);">.</th><th></th></tr>
-              <tr><th style="color:rgb(0, 0, 0, 0);">.</th><th></th></tr>
-              <tr><th style="color:rgb(0, 0, 0, 0);">.</th><th></th></tr>
-              <tr><th style="color:rgb(0, 0, 0, 0);">.</th><th></th></tr>
-              <tr><th style="color:rgb(0, 0, 0, 0);">.</th><th></th></tr>
-              <tr><th style="color:rgb(0, 0, 0, 0);">.</th><th></th></tr>
-              <tr><th style="color:rgb(0, 0, 0, 0);">.</th><th></th></tr>
-              <tr><th style="color:rgb(0, 0, 0, 0);">.</th><th></th></tr>
-              </table>
+              <tr><th><a href="https://www.bilibili.com/opus/1026415330300264473?">例示标题</a></th></tr>
+              <tr><th style="color:rgb(0, 0, 0, 0);">.</th></tr>
+              <tr><th style="color:rgb(0, 0, 0, 0);">.</th></tr>
+              <tr><th style="color:rgb(0, 0, 0, 0);">.</th></tr>
+              <tr><th style="color:rgb(0, 0, 0, 0);">.</th></tr>
+              <tr><th style="color:rgb(0, 0, 0, 0);">.</th></tr>
+              <tr><th style="color:rgb(0, 0, 0, 0);">.</th></tr>
+              <tr><th style="color:rgb(0, 0, 0, 0);">.</th></tr>
+              <tr><th style="color:rgb(0, 0, 0, 0);">.</th></tr>
+            </table>
         </section>
         <section id="essay"><h1 style="font-size: 16px;">文章</h1>
           <p>暂</p>
@@ -112,9 +111,10 @@ body {
           <p>出</p>
           <p>来</p>
         </section>
+        </div>
       </div>
     </div>
-</div>
+  </div>
 </div>
 <script>
   /*时间*/
@@ -140,8 +140,8 @@ body {
     updateDate();
   /*黑白主题切换*/
   function toggleTheme() {var body = document.body;body.classList.toggle('night-theme');}
-    /*页面切换*/
-    function showPage(pageId) {const pages = document.querySelectorAll('section');pages.forEach(page => {page.style.display = 'none';});const targetPage = document.getElementById(pageId);targetPage.style.display = 'block';}
+  /*页面切换*/
+  function showPage(pageId) {const pages = document.querySelectorAll('section');pages.forEach(page => {page.style.display = 'none';});const targetPage = document.getElementById(pageId);targetPage.style.display = 'block';}
   /* 初始显示页面 1*/
   showPage('project');
 </script>
