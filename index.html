@@ -1,4 +1,4 @@
-<html><title>oneblockh</title><meta charset="utf-8"><!页面>
+<html lang="zh"><title>oneblockh</title><meta charset="utf-8"><!页面>
 <head><style>
 /* 重置列表样式 */
 ul {list-style-type: none;margin: 0;padding: 0;overflow: hidden;background-color: #7f797903;/*position: fixed*/;top: 0px;left: 0px;width: 100%;}
@@ -27,18 +27,17 @@ body {
     transition: background-color 0.5s ease, color 0.5s ease;
 }
 .window{background-color: rgba(200, 200, 200, 0);padding: 25px 10px;display: flex;justify-content: space-between;align-items: center;width: 648px; height: 300px;margin: 1em auto 1em; }
-.window-headers{background-color: var(--wh-color); /* 半透明头部背景色 */padding: 5px 10px;justify-content: space-between;align-items: center;}
+.window-headers{background-color: var(--wh-color); /* 半透明头部背景色 */padding: 5px 10px;justify-content: space-between;align-items: center;transition: background-color 0.1s ease, color 0.2s ease;}
 .window-headerss{background-color: rgba(0, 0, 0, 0); }
 .txt-circle{font-size:8px;display: inline-block;width: 28px;height: 15px;line-height: 11px;text-align: center;background-color: rgb(0, 0, 0,0.25);border: 2px solid black;}
 #time-display {font-size: 25px;font-weight: bold;text-align: center;}
 #date-display {font-size: 15px;font-weight: bold;text-align: center;}
 .night-theme {--text-color: #f4f4f4;--wh-color:rgba(12, 11, 11, 0.5);}
+.buttons:hover{font-size:15px;}
 .obh-web{position: absolute;bottom: 0;color: #00000000;width: 100%;justify-content: center;align-items: center;display: flex; }
 </style>
 <body>
-<ul>
-<li><h1 style="font-size: 20px;" align="center">oneblockh的个人网站</h1></li>
-</ul>
+<ul><li><h1 style="font-size: 20px;" align="center">oneblockh的个人网站</h1></li></ul>
 </body></head>
 <body>
 <h1 align="center" style="color:rgb(0, 0, 0, 0);font-size: 5px;">.</h1>
@@ -51,19 +50,19 @@ body {
     <span style="color:rgb(0, 0, 0, 0);">.</span>
     <p class="txt-circle">整活</p>
     <p>hello world</p>
-    <a href="https://github.com/oneblockh"><img src="github.png" alt="github" width="32" height="32">github</a>
-    <a href="https://space.bilibili.com/3546635246242772"><img src="bilibili.png" alt="github" width="32" height="32">bilibili</a></div>
+    <a href="https://github.com/oneblockh"><img src="github.png" alt="github" width="32" height="32"><!github></a>
+    <a href="https://space.bilibili.com/3546635246242772"><img src="bilibili.png" alt="github" width="32" height="32"><!bilibili></a></div>
     <p style="color:rgb(0, 0, 0, 0); font-size: 2px;">.</p>
     <div class="window-headers"><div id="time-display"></div><div id="date-display"></div></div>
     <p style="color:rgb(0, 0, 0, 0); font-size: 3px;">.</p>
-    <div class="window-headers" style="font-size: 9px;"><button onclick="toggleTheme()">切换主题</button></div>
+    <div class="window-headers" style="font-size: 9px;"><button onclick="toggleTheme()"style="background-color:rgb(0, 0, 0, 0);color:var(--text-color);border: 1px solid var(--text-color);transition:color 0.5s ease;" class="buttons">切换主题</button></div>
 </div>
   <div class="window-headerss" style="width: 73%;">
       <div class="window-headers">
-        <button href="#" onclick="showPage('project'); return false;">项目</button>
-        <button href="#" onclick="showPage('resources'); return false;">资源</button>
-        <button href="#" onclick="showPage('updates'); return false;">动态</button>
-        <button href="#" onclick="showPage('essay'); return false;">文章</button>
+        <button href="#" onclick="showPage('project'); return false;" style="background-color:rgb(0, 0, 0, 0);color:var(--text-color);border: 1px solid var(--text-color);transition:color 0.5s ease;" class="buttons">项目</button>
+        <button href="#" onclick="showPage('resources'); return false;" style="background-color:rgb(0, 0, 0, 0);color:var(--text-color);border: 1px solid var(--text-color);transition:color 0.5s ease;" class="buttons">资源</button>
+        <button href="#" onclick="showPage('updates'); return false;" style="background-color:rgb(0, 0, 0, 0);color:var(--text-color);border: 1px solid var(--text-color);transition:color 0.5s ease;" class="buttons">动态</button>
+        <button href="#" onclick="showPage('essay'); return false;" style="background-color:rgb(0, 0, 0, 0);color:var(--text-color);border: 1px solid var(--text-color);transition:color 0.5s ease;" class="buttons">文章</button>
       </div>
       <p style="color:rgb(0, 0, 0, 0); font-size: 3px;">.</p>
       <div class="window-headers" style="font-size: 10px;">
@@ -115,7 +114,8 @@ body {
         </section>
       </div>
     </div>
-</div></div>
+</div>
+</div>
 <script>
   /*时间*/
   function updateTime() {
