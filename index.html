@@ -29,7 +29,6 @@ body {
 .window{background-color: rgba(200, 200, 200, 0);padding: 25px 10px;display: flex;justify-content: space-between;align-items: center;width: 648px; height: 300px;margin: 1em auto 1em; }
 .window-headers{background-color: var(--wh-color); /* 半透明头部背景色 */padding: 5px 10px;justify-content: space-between;align-items: center;transition: background-color 0.1s ease, color 0.2s ease;border-radius: 11px;}
 .window-headerss{background-color: rgba(0, 0, 0, 0); }
-.txt-circle{font-size:8px;display: inline-block;width: 28px;height: 15px;line-height: 11px;text-align: center;background-color: rgb(0, 0, 0,0.25);border: 2px solid black;border-radius: 3px;}
 #time-display {font-size: 25px;font-weight: bold;text-align: center;}
 #date-display {font-size: 15px;font-weight: bold;text-align: center;}
 .night-theme {--text-color: #f4f4f4;--wh-color:rgba(12, 11, 11, 0.5);}
@@ -39,6 +38,8 @@ section {display: none;opacity: 0;animation: fadeIn 1s ease forwards;}
 section:target {display: block;}
 .projectlists{max-width: 100%;max-height: 280px; /* 设置最大高度 */overflow-y: auto; /* 添加垂直滚动条 */;}
 table{border-radius: 3px;}
+.typing {width: max-content;white-space: nowrap;overflow: hidden;border-right: 3px solid var(--text-color);/* 设置动画无限重复 */animation: typingAnimation 3s steps(40) infinite;}
+@keyframes typingAnimation {from {width: 0;}to {width: 100%;}}
 .obh-web{position: absolute;bottom: 0;color: #00000000;width: 100%;justify-content: center;align-items: center;display: flex; }
 </style>
 <body>
@@ -46,15 +47,10 @@ table{border-radius: 3px;}
 </body></head>
 <body>
 <h1 align="center" style="color:rgb(0, 0, 0, 0);font-size: 5px;">.</h1>
-<div class="fixed-window"><div class="window" align="center">
+<div class="window" align="center">
   <div class="window-headerss"><div class="window-headers" align="center">
     <h1 style="font-size: 20px;"><img src="obh.png" alt="oneblockh" width="50" height="50" style="border-radius: 3px;">oneblockh</h1>
-    <p class="txt-circle">mc玩家</p>
-    <span style="color:rgb(0, 0, 0, 0);">.</span>
-    <p class="txt-circle">学生</p>
-    <span style="color:rgb(0, 0, 0, 0);">.</span>
-    <p class="txt-circle">整活</p>
-    <p>hello world</p>
+    <p class="typing">hello world</p>
     <a href="https://github.com/oneblockh"><img src="github.png" alt="github" width="32" height="32"><!github></a>
     <a href="https://space.bilibili.com/3546635246242772"><img src="bilibili.png" alt="github" width="32" height="32"><!bilibili></a></div>
     <p style="color:rgb(0, 0, 0, 0); font-size: 2px;">.</p>
@@ -72,46 +68,25 @@ table{border-radius: 3px;}
       <p style="color:rgb(0, 0, 0, 0); font-size: 3px;">.</p>
       <div class="window-headers" style="font-size: 10px;height: 265px;"><div class="projectlists">
           <section id="project"><h1 style="font-size: 16px;">项目</h1>
-            <table border="1" style="width:95%">
-              <tr><th><a href="https://oneblockh.github.io">个人网站</a></th></tr>
+            <table border="1" style="width:95%;text-align: center;" id="projectTable">
+              <tr></tr>
             </table>
           </section>
          <section id="resources"><h1 style="font-size: 16px;">资源</h1>
-            <p>暂</p>
-            <p>时</p>
-            <p>还</p>
-            <p>没</p>
-            <p>有</p>
-            <p>资</p>
-            <p>源</p>
-            <p>出</p>
-            <p>来</p>
+          <table border="1" style="width:95%;text-align: center;" id="resourceTable">
+            <tr></tr>
+          </table>
           </section>
           <section id="updates"><h1 style="font-size: 16px;">动态</h1>
-            <table border="1" style="width:95%">
-              <tr><th><a href="https://www.bilibili.com/opus/1026415330300264473?">例示标题</a></th></tr>
-              <tr><th style="color:rgb(0, 0, 0, 0);">.</th></tr>
-              <tr><th style="color:rgb(0, 0, 0, 0);">.</th></tr>
-              <tr><th style="color:rgb(0, 0, 0, 0);">.</th></tr>
-              <tr><th style="color:rgb(0, 0, 0, 0);">.</th></tr>
-              <tr><th style="color:rgb(0, 0, 0, 0);">.</th></tr>
-              <tr><th style="color:rgb(0, 0, 0, 0);">.</th></tr>
-              <tr><th style="color:rgb(0, 0, 0, 0);">.</th></tr>
-              <tr><th style="color:rgb(0, 0, 0, 0);">.</th></tr>
+            <table border="1" style="width:95%;text-align: center;" id="newsTable">
+              <tr></tr>
             </table>
         </section>
         <section id="essay"><h1 style="font-size: 16px;">文章</h1>
-          <p>暂</p>
-          <p>时</p>
-          <p>还</p>
-          <p>没</p>
-          <p>有</p>
-          <p>文</p>
-          <p>章</p>
-          <p>出</p>
-          <p>来</p>
+          <table border="1" style="width:95%;text-align: center;" id="articleTable">
+            <tr></tr>
+          </table>
         </section>
-        </div>
       </div>
     </div>
   </div>
@@ -144,5 +119,30 @@ table{border-radius: 3px;}
   function showPage(pageId) {const pages = document.querySelectorAll('section');pages.forEach(page => {page.style.display = 'none';});const targetPage = document.getElementById(pageId);targetPage.style.display = 'block';}
   /* 初始显示页面 1*/
   showPage('project');
+</script>
+<script>
+  /*内容获取器*/
+  const tableConfigs = [{ tableId: 'projectTable', filePath: 'projects.txt' },{ tableId: 'resourceTable', filePath: 'resources.txt' },{ tableId: 'newsTable', filePath: 'news.txt' },{ tableId: 'articleTable', filePath: 'articles.txt' }];
+  tableConfigs.forEach(config => {const xhr = new XMLHttpRequest();xhr.open('GET', config.filePath, true);
+  xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4) {
+              if (xhr.status === 200) {
+                  const responseText = xhr.responseText;
+                  const lines = responseText.split('\n');
+                  const tableBody = document.querySelector(`#${config.tableId} tbody`);
+                  lines.forEach(line => {
+                      if (line.trim()!== '') {
+                          const [name, link] = line.split(',');
+                          const row = document.createElement('tr');
+                          const nameCell = document.createElement('td');
+                          const linkCell = document.createElement('td');
+                          const anchor = document.createElement('a');
+                          anchor.href = link;
+                          anchor.textContent = name;
+                          linkCell.appendChild(anchor);
+                          row.appendChild(linkCell);
+                          tableBody.appendChild(row);
+}});}
+  else {/*请求内容*/console.error(`请求 ${config.filePath} 文件失败，状态码: 1145141919810`, xhr.status);}}};xhr.send();});
 </script>
 </body><body><div class="obh-web"><p style="color:blue;">.</p><a href="https://github.com/oneblockh/oneblockh.github.io/tree/main">关于网站项目</a><p style="color: red">by_oneblockh</p></div></body></html>
