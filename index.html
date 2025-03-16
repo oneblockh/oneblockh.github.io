@@ -12,7 +12,7 @@ li a:hover {background-color: #111;}
 body {
     height: 100%;
     width: 100%;
-    background-image: url('background.png'); /* 将这里替换为你实际想要的背景图片路径，也可以使用背景颜色，例如 background-color: #f0f0f0; */
+    background: url('background.png'); /* 将这里替换为你实际想要的背景图片路径，也可以使用背景颜色，例如 background-color: #f0f0f0; */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -26,7 +26,7 @@ body {
     color: var(--text-color);
     transition: background-color 0.5s ease, color 0.5s ease;
 }
-.window{background-color: rgba(200, 200, 200, 0);padding: 25px 10px;display: flex;justify-content: space-between;align-items: center;width: 648px; height: 300px;margin: 1em auto 1em; }
+.window{background-color: rgba(200, 200, 200, 0);padding: 25px 10px;display: flex;justify-content: space-between;align-items: center;width: 75%; height: 248px;margin: 1em auto 1em; }
 .window-headers{background-color: var(--wh-color); /* 半透明头部背景色 */padding: 5px 10px;justify-content: space-between;align-items: center;transition: background-color 0.1s ease, color 0.2s ease;border-radius: 11px;}
 .window-headerss{background-color: rgba(0, 0, 0, 0); }
 #time-display {font-size: 25px;font-weight: bold;text-align: center;}
@@ -43,12 +43,12 @@ table{border-radius: 3px;}
 .obh-web{position: absolute;bottom: 0;color: #00000000;width: 100%;justify-content: center;align-items: center;display: flex; }
 </style>
 <body>
-<ul><li><h1 style="font-size: 20px;" align="center">oneblockh的个人网站</h1></li></ul>
+<ul><li><h1 style="font-size: 20px;" align="center">oneblockh的个人主页</h1></li></ul>
+<script>function isIE() {const userAgent = navigator.userAgent;return /MSIE|Trident/.test(userAgent);} if (isIE()) {window.location.href = "https://www.microsoft.com/zh-cn/edge/download?";alert('你正在使用ie浏览器,页面已经无法正常显示了,需要对你的浏览器进行更新。');}</script>
 </body></head>
-<body>
-<h1 align="center" style="color:rgb(0, 0, 0, 0);font-size: 5px;">.</h1>
+<body><h1 align="center" style="color:rgb(0, 0, 0, 0);font-size: 5px;">.</h1>
 <div class="window" align="center">
-  <div class="window-headerss"><div class="window-headers" align="center">
+  <div class="window-headerss" style="width: 125px;"><div class="window-headers" align="center">
     <h1 style="font-size: 20px;"><img src="obh.png" alt="oneblockh" width="50" height="50" style="border-radius: 3px;">oneblockh</h1>
     <p class="typing">hello world</p>
     <a href="https://github.com/oneblockh"><img src="github.png" alt="github" width="32" height="32"><!github></a>
@@ -58,7 +58,8 @@ table{border-radius: 3px;}
     <p style="color:rgb(0, 0, 0, 0); font-size: 3px;">.</p>
     <div class="window-headers" style="font-size: 9px;"><button onclick="toggleTheme()"style="background-color:rgb(0, 0, 0, 0);color:var(--text-color);border: 1px solid var(--text-color);transition:color 0.5s ease;border-radius: 3px;" class="buttons">切换主题</button></div>
 </div>
-  <div class="window-headerss" style="width: 73%;">
+<div class="window-headerss" style="color:rgb(0, 0, 0, 0);">.</div>
+  <div class="window-headerss" style="width: clamp(85%,91%,97%);">
       <div class="window-headers">
         <button href="#" onclick="showPage('project'); return false;" style="background-color:rgb(0, 0, 0, 0);color:var(--text-color);border: 1px solid var(--text-color);transition:color 0.5s ease;border-radius: 3px;" class="buttons">项目</button>
         <button href="#" onclick="showPage('resources'); return false;" style="background-color:rgb(0, 0, 0, 0);color:var(--text-color);border: 1px solid var(--text-color);transition:color 0.5s ease;border-radius: 3px;" class="buttons">资源</button>
@@ -142,7 +143,6 @@ table{border-radius: 3px;}
                           linkCell.appendChild(anchor);
                           row.appendChild(linkCell);
                           tableBody.appendChild(row);
-}});}
-  else {/*请求内容*/console.error(`请求 ${config.filePath} 文件失败，状态码: 1145141919810`, xhr.status);}}};xhr.send();});
+}});}else {/*请求内容*/console.error(`请求 ${config.filePath} 文件失败，状态码: 1145141919810`, xhr.status);}}};xhr.send();});
 </script>
 </body><body><div class="obh-web"><p style="color:blue;">.</p><a href="https://github.com/oneblockh/oneblockh.github.io/tree/main">关于网站项目</a><p style="color: red">by_oneblockh</p></div></body></html>
