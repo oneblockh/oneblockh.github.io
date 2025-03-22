@@ -1,18 +1,18 @@
-<html lang="zh"><title>oneblockh</title><meta charset="utf-8"><!页面>
+<html lang="zh"><title>oneblockh</title><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><!页面>
 <head><style>
 /* 重置列表样式 */
-ul {list-style-type: none;margin: 0;padding: 0;overflow: hidden;background-color: #7f797903;/*position: fixed*/;top: 0px;left: 0px;width: 100%;}
+ul {list-style-type: none;margin: 0;padding: 0;overflow: hidden;background-color: #7f797900;/*position: fixed*/;top: 0px;left: 0px;width: 100%;}
 /* 设置列表项为横向排列 */
 li {float:center;}
 /* 设置链接样式 */
 li a {display: block;color: white;text-align: center;padding: 14px 16px;text-decoration: none;}
 /* 鼠标悬停时的背景颜色变化 */
 li a:hover {background-color: #111;}
-:root {--text-color: #333;--wh-color:rgba(247, 240, 240, 0.5);}
+:root {--text-color: black;--wh-color:rgba(248, 248, 248, 0.5);}
 body {
     height: 100%;
     width: 100%;
-    background: url('background.png'); /* 将这里替换为你实际想要的背景图片路径，也可以使用背景颜色，例如 background-color: #f0f0f0; */
+    background: url('background.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -26,33 +26,33 @@ body {
     color: var(--text-color);
     transition: background-color 0.5s ease, color 0.5s ease;
 }
-.window{background-color: rgba(200, 200, 200, 0);padding: 25px 10px;display: flex;justify-content: space-between;align-items: center;width: 75%; height: 248px;margin: 1em auto 1em; }
-.window-headers{background-color: var(--wh-color); /* 半透明头部背景色 */padding: 5px 10px;justify-content: space-between;align-items: center;transition: background-color 0.1s ease, color 0.2s ease;border-radius: 11px;}
+.window{background-color: rgba(200, 200, 200, 0);padding: 11px 25px;display: flex;justify-content: space-between;align-items: center;width: 75%;height: 248px;margin: 1em auto 1em;}
+.window-headers{background-color: var(--wh-color);padding: 5px 11px;justify-content: space-between;align-items: center;transition: background-color 0.1s ease, color 0.2s ease;border-radius: 11px;box-shadow: 7px 3px 25px 11px rgba(201, 196, 196, 0.75);backdrop-filter: blur(1.1px) brightness(100%);}
 .window-headerss{background-color: rgba(0, 0, 0, 0); }
 #time-display {font-size: 25px;font-weight: bold;text-align: center;}
 #date-display {font-size: 15px;font-weight: bold;text-align: center;}
-.night-theme {--text-color: #f4f4f4;--wh-color:rgba(12, 11, 11, 0.5);}
+.night-theme {--text-color: white;--wh-color:rgba(12, 11, 11, 0.5);}
 .buttons:hover{font-size:15px;}
 section {display: none;opacity: 0;animation: fadeIn 1s ease forwards;}
 @keyframes fadeIn {to {opacity: 1;}}
 section:target {display: block;}
 .projectlists{max-width: 100%;max-height: 280px; /* 设置最大高度 */overflow-y: auto; /* 添加垂直滚动条 */;}
-table{border-radius: 3px;}
-.typing {width: max-content;white-space: nowrap;overflow: hidden;border-right: 3px solid var(--text-color);/* 设置动画无限重复 */animation: typingAnimation 3s steps(40) infinite;}
+table,td,td a:hover,.bh:hover{border: 1px solid var(--text-color) ;border-radius: 3px;transition: color 0.2s ease;}
+.typing {width: max-content;white-space: nowrap;overflow: hidden;border-right: 3px solid var(--text-color);/* 设置动画无限重复 */animation: typingAnimation 3s steps(40) infinite;transition: color 0.3s ease;}
 @keyframes typingAnimation {from {width: 0;}to {width: 100%;}}
 .obh-web{position: absolute;bottom: 0;color: #00000000;width: 100%;justify-content: center;align-items: center;display: flex; }
 </style>
 <body>
 <ul><li><h1 style="font-size: 20px;" align="center">oneblockh的个人主页</h1></li></ul>
-<script>function isIE() {const userAgent = navigator.userAgent;return /MSIE|Trident/.test(userAgent);} if (isIE()) {window.location.href = "https://www.microsoft.com/zh-cn/edge/download?";alert('你正在使用ie浏览器,页面已经无法正常显示了,需要对你的浏览器进行更新。');}</script>
+<script>function isIE() {const userAgent = navigator.userAgent;return /MSIE|Trident/.test(userAgent);} if (isIE()) {window.location.href = "https://www.microsoft.com/zh-cn/edge/download?";alert('你正在使用ie浏览器,页面已经无法正常显示了,需要对你的浏览器进行更新。此后会跳转升级页面。');}</script>
 </body></head>
-<body><h1 align="center" style="color:rgb(0, 0, 0, 0);font-size: 5px;">.</h1>
+<body>
 <div class="window" align="center">
   <div class="window-headerss" style="width: 125px;"><div class="window-headers" align="center">
     <h1 style="font-size: 20px;"><img src="obh.png" alt="oneblockh" width="50" height="50" style="border-radius: 3px;">oneblockh</h1>
     <p class="typing">hello world</p>
-    <a href="https://github.com/oneblockh"><img src="github.png" alt="github" width="32" height="32"><!github></a>
-    <a href="https://space.bilibili.com/3546635246242772"><img src="bilibili.png" alt="github" width="32" height="32"><!bilibili></a></div>
+    <a href="https://github.com/oneblockh"><img src="github.png" alt="github" width="32" height="32" class="bh"><!github></a>
+    <a href="https://space.bilibili.com/3546635246242772"><img src="bilibili.png" alt="github" width="32" height="32" class="bh"><!bilibili></a></div>
     <p style="color:rgb(0, 0, 0, 0); font-size: 2px;">.</p>
     <div class="window-headers"><div id="time-display"></div><div id="date-display"></div></div>
     <p style="color:rgb(0, 0, 0, 0); font-size: 3px;">.</p>
@@ -67,7 +67,7 @@ table{border-radius: 3px;}
         <button href="#" onclick="showPage('essay'); return false;" style="background-color:rgb(0, 0, 0, 0);color:var(--text-color);border: 1px solid var(--text-color);transition:color 0.5s ease;border-radius: 3px;" class="buttons">文章</button>
       </div>
       <p style="color:rgb(0, 0, 0, 0); font-size: 3px;">.</p>
-      <div class="window-headers" style="font-size: 10px;height: 265px;"><div class="projectlists">
+      <div class="window-headers" style="font-size: 10px;height: 100%;"><div class="projectlists">
           <section id="project"><h1 style="font-size: 16px;">项目</h1>
             <table border="1" style="width:95%;text-align: center;" id="projectTable">
               <tr></tr>
