@@ -1,4 +1,4 @@
-7<html lang="zh">
+<html lang="zh">
 <meta charset="utf-8">
 <body>
   <h1>个人网站主页示例</h1>
