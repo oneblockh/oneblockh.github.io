@@ -17,57 +17,58 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     font-family: Arial, sans-serif;
-
+    align-items: center;
     margin: 0;
-    padding: 0;
-    position: fixed;       
+    padding: 0;       
     font-family: Arial, sans-serif;
     background-color: var(--background-color); 
     color: var(--text-color);
     transition: background-color 0.5s ease, color 0.5s ease;
 }
-.window{background-color: rgba(200, 200, 200, 0);padding: 11px 25px;display: flex;justify-content: space-between;align-items: center;width: 85%;height: 75%;height: clamp(39%,60%,75%);margin: 1em auto 1em;}
-.window-headers{background-color: var(--wh-color);padding: 5px 11px;justify-content: space-between;align-items: center;transition: background-color 0.1s ease, color 0.2s ease;border-radius: 11px;box-shadow: 7px 3px 25px 11px rgba(201, 196, 196, 0.75);backdrop-filter: blur(1.1px) brightness(100%);}
-.window-headerss{background-color: rgba(0, 0, 0, 0); }
+.page{justify-content: space-between;align-items: center;margin: 1em auto 1em;}
+.window-a{align-items: center;;background: var(--wh-color);padding: 5px 11px;transition: background-color 0.1s ease, color 0.2s ease;border-radius: 11px;box-shadow: 7px 3px 25px 11px rgba(201, 196, 196, 0.25);backdrop-filter: blur(0.3px) brightness(100%);}
+.window-p{align-items: center;background-color: var(--wh-color);padding: 5px 11px;transition: background-color 0.1s ease, color 0.2s ease;border-radius: 11px;box-shadow: 7px 3px 25px 11px rgba(201, 196, 196, 0.75);backdrop-filter: blur(1.1px) brightness(100%);width: 85%;}
 #time-display {font-size: 25px;font-weight: bold;text-align: center;}
 #date-display {font-size: 15px;font-weight: bold;text-align: center;}
 .night-theme {--text-color: white;--wh-color:rgba(12, 11, 11, 0.5);}
+.buttons{background-color:rgb(0, 0, 0, 0);color:var(--text-color);border: 1px solid var(--text-color);transition:color 0.5s ease;border-radius: 3px;}
 .buttons:hover{font-size:15px;}
 section {display: none;opacity: 0;animation: fadeIn 1s ease forwards;}
 @keyframes fadeIn {to {opacity: 1;}}
 section:target {display: block;}
-.projectlists{max-width: 100%;max-height: 280px; /* 设置最大高度 */overflow-y: auto; /* 添加垂直滚动条 */;}
+.projectlists{max-width: 100%;max-height: 280px; overflow-y: auto; /* 添加垂直滚动条 */;}
 table,td,td a:hover,.bh:hover{border: 1px solid var(--text-color) ;border-radius: 3px;transition: background-color 0.1s ease,color 0.2s ease;}
 .typing {width: max-content;white-space: nowrap;overflow: hidden;border-right: 3px solid var(--text-color);/* 设置动画无限重复 */animation: typingAnimation 3s steps(40) infinite;transition: color 0.3s ease;}
 @keyframes typingAnimation {from {width: 0;}to {width: 100%;}}
-.obh-web{position: absolute;bottom: 0;color: #00000000;width: 100%;justify-content: center;align-items: center;display: flex; }
+.obh-web{color: #00000000;width: 225px;justify-content: space-between;align-items: center;display: flex;margin: 1em auto 1em;}
 </style>
 <body>
 <ul><li><h1 style="font-size: 20px;" align="center">oneblockh的个人主页</h1></li></ul>
 <script>function isIE() {const userAgent = navigator.userAgent;return /MSIE|Trident/.test(userAgent);} if (isIE()) {window.location.href = "https://www.microsoft.com/zh-cn/edge/download?";alert('你正在使用ie浏览器,页面已经无法正常显示了,需要对你的浏览器进行更新。此后会跳转升级页面。');}</script>
 </body></head>
 <body>
-<div class="window" align="center">
-  <div class="window-headerss" style="width: 125px;"><div class="window-headers" align="center">
-    <h1 style="font-size: 20px;"><img src="obh.png" alt="oneblockh" width="50" height="50" style="border-radius: 3px;">oneblockh</h1>
-    <p class="typing">hello world</p>
+  <div class="page" align="center">
+  <div style="width: 256px;display:flex;" align="center">
+    <div class="window-a">
+    <div style="display: flex;justify-content: space-between;align-self: center;width: 155px;">
+    <img src="obh.png" alt="oneblockh" width="50" height="50" style="border-radius: 3px;">
+    <div><h1 style="font-size: 20px;">oneblockh</h1><p class="typing">hello world</p></div>
+    </div>
     <a href="https://github.com/oneblockh"><img src="github.png" alt="github" width="32" height="32" class="bh"><!github></a>
     <a href="https://space.bilibili.com/3546635246242772"><img src="bilibili.png" alt="github" width="32" height="32" class="bh"><!bilibili></a></div>
     <p style="color:rgb(0, 0, 0, 0); font-size: 2px;">.</p>
-    <div class="window-headers"><div id="time-display"></div><div id="date-display"></div></div>
+    <div class="window-a" style="width: 100px;"><div id="time-display"></div><div id="date-display"></div>
+     <button onclick="toggleTheme()" class="buttons">切换主题</button></div>
+    </div>
     <p style="color:rgb(0, 0, 0, 0); font-size: 3px;">.</p>
-    <div class="window-headers" style="font-size: 9px;"><button onclick="toggleTheme()"style="background-color:rgb(0, 0, 0, 0);color:var(--text-color);border: 1px solid var(--text-color);transition:color 0.5s ease;border-radius: 3px;" class="buttons">切换主题</button></div>
-</div>
-<div class="window-headerss" style="color:rgb(0, 0, 0, 0);">.</div>
-  <div class="window-headerss" style="width: clamp(85%,91%,97%);">
-      <div class="window-headers">
-        <button href="#" onclick="showPage('project'); return false;" style="background-color:rgb(0, 0, 0, 0);color:var(--text-color);border: 1px solid var(--text-color);transition:color 0.5s ease;border-radius: 3px;" class="buttons">项目</button>
-        <button href="#" onclick="showPage('resources'); return false;" style="background-color:rgb(0, 0, 0, 0);color:var(--text-color);border: 1px solid var(--text-color);transition:color 0.5s ease;border-radius: 3px;" class="buttons">资源</button>
-        <button href="#" onclick="showPage('updates'); return false;" style="background-color:rgb(0, 0, 0, 0);color:var(--text-color);border: 1px solid var(--text-color);transition:color 0.5s ease;border-radius: 3px;" class="buttons">动态</button>
-        <button href="#" onclick="showPage('essay'); return false;" style="background-color:rgb(0, 0, 0, 0);color:var(--text-color);border: 1px solid var(--text-color);transition:color 0.5s ease;border-radius: 3px;" class="buttons">文章</button>
+      <div class="window-p">
+        <button href="#" onclick="showPage('project'); return false;" class="buttons">项目</button>
+        <button href="#" onclick="showPage('resources'); return false;" class="buttons">资源</button>
+        <button href="#" onclick="showPage('updates'); return false;" class="buttons">动态</button>
+        <button href="#" onclick="showPage('essay'); return false;" class="buttons">文章</button>
       </div>
       <p style="color:rgb(0, 0, 0, 0); font-size: 3px;">.</p>
-      <div class="window-headers" style="font-size: 10px;height: 100%;"><div class="projectlists">
+      <div class="window-p" style="font-size: 10px;height: 75%;height: clamp(25%,39%,48%);" align="center"><div class="projectlists">
           <section id="project"><h1 style="font-size: 16px;">项目</h1>
             <table border="1" style="width:95%;text-align: center;" id="projectTable">
               <tr></tr>
@@ -91,7 +92,6 @@ table,td,td a:hover,.bh:hover{border: 1px solid var(--text-color) ;border-radius
       </div>
     </div>
   </div>
-</div>
 <script>
   /*时间*/
   function updateTime() {
@@ -145,4 +145,4 @@ table,td,td a:hover,.bh:hover{border: 1px solid var(--text-color) ;border-radius
                           tableBody.appendChild(row);
 }});}else {/*请求内容*/console.error(`请求 ${config.filePath} 文件失败，状态码: 1145141919810`, xhr.status);}}};xhr.send();});
 </script>
-</body><body><div class="obh-web"><p style="color:blue;">.</p><a href="https://github.com/oneblockh/oneblockh.github.io/tree/main">关于网站项目</a><p style="color: red">by_oneblockh</p></div></body></html>
+<div class="obh-web" align="center"><p style="color:blue;">.</p><a href="https://github.com/oneblockh/oneblockh.github.io/tree/main">关于网站项目</a><p style="color: red">by_oneblockh</p></div></body></html>
