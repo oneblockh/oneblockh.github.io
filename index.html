@@ -1,13 +1,6 @@
 <html lang="zh"><title>oneblockh</title><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><!页面>
 <head><style>
-/* 重置列表样式 */
 ul {list-style-type: none;margin: 0;padding: 0;overflow: hidden;background-color: #7f797900;/*position: fixed*/;top: 0px;left: 0px;width: 100%;}
-/* 设置列表项为横向排列 */
-li {float:center;}
-/* 设置链接样式 */
-li a {display: block;color: white;text-align: center;padding: 14px 16px;text-decoration: none;}
-/* 鼠标悬停时的背景颜色变化 */
-li a:hover {background-color: #111;}
 :root {--text-color: black;--wh-color:rgba(248, 248, 248, 0.5);}
 body {
     height: 100%;
@@ -25,70 +18,46 @@ body {
     color: var(--text-color);
     transition: background-color 0.5s ease, color 0.5s ease;
 }
-.page{justify-content: space-between;align-items: center;margin: 1em auto 1em;}
-.window-a{align-items: center;;background: var(--wh-color);padding: 5px 11px;transition: background-color 0.1s ease, color 0.2s ease;border-radius: 11px;box-shadow: 7px 3px 25px 11px rgba(201, 196, 196, 0.25);backdrop-filter: blur(0.3px) brightness(100%);}
-.window-p{align-items: center;background-color: var(--wh-color);padding: 5px 11px;transition: background-color 0.1s ease, color 0.2s ease;border-radius: 11px;box-shadow: 7px 3px 25px 11px rgba(201, 196, 196, 0.75);backdrop-filter: blur(1.1px) brightness(100%);width: 85%;}
+.page{justify-content: space-between;margin: 1em auto 1em;}
+.window{background: var(--wh-color);padding: 5px 11px;transition: background-color 0.2s ease, color 0.2s ease;border-radius: 11px;box-shadow: 7px 3px 25px 11px rgba(201, 196, 196, 0.25);backdrop-filter: blur(1.7px) brightness(100%);}
 #time-display {font-size: 25px;font-weight: bold;text-align: center;}
 #date-display {font-size: 15px;font-weight: bold;text-align: center;}
+.card{display: flex;flex-wrap: wrap;align-items: center;}
+.card a{background: var(--wh-color);border-radius: 3px;color: var(--text-color);transition: background-color 0.2s ease, color 0.2s ease;}
+.card a:hover{box-shadow: 7px 3px 25px 11px rgba(201, 196, 196, 0.25);backdrop-filter: blur(0.3px) brightness(100%);}
 .night-theme {--text-color: white;--wh-color:rgba(12, 11, 11, 0.5);}
 .buttons{background-color:rgb(0, 0, 0, 0);color:var(--text-color);border: 1px solid var(--text-color);transition:color 0.5s ease;border-radius: 3px;}
 .buttons:hover{font-size:15px;}
-section {display: none;opacity: 0;animation: fadeIn 1s ease forwards;}
-@keyframes fadeIn {to {opacity: 1;}}
-section:target {display: block;}
-.projectlists{max-width: 100%;max-height: 280px; overflow-y: auto; /* 添加垂直滚动条 */;}
+.projectlists{max-width: 100%;max-height: 50%; overflow-y: auto; /* 添加垂直滚动条 */;}
 table,td,td a:hover,.bh:hover{border: 1px solid var(--text-color) ;border-radius: 3px;transition: background-color 0.1s ease,color 0.2s ease;}
 .typing {width: max-content;white-space: nowrap;overflow: hidden;border-right: 3px solid var(--text-color);/* 设置动画无限重复 */animation: typingAnimation 3s steps(40) infinite;transition: color 0.3s ease;}
 @keyframes typingAnimation {from {width: 0;}to {width: 100%;}}
 .obh-web{color: #00000000;width: 225px;justify-content: space-between;align-items: center;display: flex;margin: 1em auto 1em;}
 </style>
 <body>
-<ul><li><h1 style="font-size: 20px;" align="center">oneblockh的个人主页</h1></li></ul>
+<ul><h1 style="font-size: 20px;" align="center">oneblockh的个人主页</h1></ul>
 <script>function isIE() {const userAgent = navigator.userAgent;return /MSIE|Trident/.test(userAgent);} if (isIE()) {window.location.href = "https://www.microsoft.com/zh-cn/edge/download?";alert('你正在使用ie浏览器,页面已经无法正常显示了,需要对你的浏览器进行更新。此后会跳转升级页面。');}</script>
 </body></head>
 <body>
   <div class="page" align="center">
-  <div style="width: 256px;display:flex;" align="center">
-    <div class="window-a">
-    <div style="display: flex;justify-content: space-between;align-self: center;width: 155px;">
+  <div style="width: 155px;display:flex;" align="center">
+    <div class="window">
+    <div style="display: flex;align-self: center;">
     <img src="obh.png" alt="oneblockh" width="50" height="50" style="border-radius: 3px;">
     <div><h1 style="font-size: 20px;">oneblockh</h1><p class="typing">hello world</p></div>
     </div>
     <a href="https://github.com/oneblockh"><img src="github.png" alt="github" width="32" height="32" class="bh"><!github></a>
-    <a href="https://space.bilibili.com/3546635246242772"><img src="bilibili.png" alt="github" width="32" height="32" class="bh"><!bilibili></a></div>
+    <a href="https://space.bilibili.com/3546635246242772"><img src="bilibili.png" alt="github" width="32" height="32" class="bh"><!bilibili></a>
+    <button onclick="toggleTheme()" class="buttons">切换主题</button></div>
     <p style="color:rgb(0, 0, 0, 0); font-size: 2px;">.</p>
-    <div class="window-a" style="width: 100px;"><div id="time-display"></div><div id="date-display"></div>
-     <button onclick="toggleTheme()" class="buttons">切换主题</button></div>
     </div>
-    <p style="color:rgb(0, 0, 0, 0); font-size: 3px;">.</p>
-      <div class="window-p">
-        <button href="#" onclick="showPage('project'); return false;" class="buttons">项目</button>
-        <button href="#" onclick="showPage('resources'); return false;" class="buttons">资源</button>
-        <button href="#" onclick="showPage('updates'); return false;" class="buttons">动态</button>
-        <button href="#" onclick="showPage('essay'); return false;" class="buttons">文章</button>
-      </div>
       <p style="color:rgb(0, 0, 0, 0); font-size: 3px;">.</p>
-      <div class="window-p" style="font-size: 10px;height: 75%;height: clamp(25%,39%,48%);" align="center"><div class="projectlists">
-          <section id="project"><h1 style="font-size: 16px;">项目</h1>
-            <table border="1" style="width:95%;text-align: center;" id="projectTable">
-              <tr></tr>
-            </table>
-          </section>
-         <section id="resources"><h1 style="font-size: 16px;">资源</h1>
-          <table border="1" style="width:95%;text-align: center;" id="resourceTable">
-            <tr></tr>
-          </table>
-          </section>
-          <section id="updates"><h1 style="font-size: 16px;">动态</h1>
-            <table border="1" style="width:95%;text-align: center;" id="newsTable">
-              <tr></tr>
-            </table>
-        </section>
-        <section id="essay"><h1 style="font-size: 16px;">文章</h1>
-          <table border="1" style="width:95%;text-align: center;" id="articleTable">
-            <tr></tr>
-          </table>
-        </section>
+      <div class="window" style="font-size: 10px;width: 75%;"><div class="projectlists">
+        <h1 style="font-size: 16px;">导航</h1><div class="card" align="center">
+          <a><p style="color:rgb(0, 0, 0, 0); font-size: 3px;">.</p><div id="time-display"></div><div id="date-display"></div><p style="color:rgb(0, 0, 0, 0); font-size: 3px;">.</p></a><p style="color:rgb(0, 0, 0, 0); font-size: 8px;">.</p>
+          <a href="https://space.bilibili.com/3546635246242772/dynamic"><h3>动态</h3><p>动态是我日常的生活</p></a></div>
+        <h1 style="font-size: 16px;">项目</h1>
+        <table id="repo-table" border="1" style="width:95%;text-align: center;" ><tbody></tbody></table>
       </div>
     </div>
   </div>
@@ -116,33 +85,31 @@ table,td,td a:hover,.bh:hover{border: 1px solid var(--text-color) ;border-radius
     updateDate();
   /*黑白主题切换*/
   function toggleTheme() {var body = document.body;body.classList.toggle('night-theme');}
-  /*页面切换*/
-  function showPage(pageId) {const pages = document.querySelectorAll('section');pages.forEach(page => {page.style.display = 'none';});const targetPage = document.getElementById(pageId);targetPage.style.display = 'block';}
-  /* 初始显示页面 1*/
-  showPage('project');
 </script>
 <script>
   /*内容获取器*/
-  const tableConfigs = [{ tableId: 'projectTable', filePath: 'projects.txt' },{ tableId: 'resourceTable', filePath: 'resources.txt' },{ tableId: 'newsTable', filePath: 'news.txt' },{ tableId: 'articleTable', filePath: 'articles.txt' }];
-  tableConfigs.forEach(config => {const xhr = new XMLHttpRequest();xhr.open('GET', config.filePath, true);
-  xhr.onreadystatechange = function () {
-          if (xhr.readyState === 4) {
-              if (xhr.status === 200) {
-                  const responseText = xhr.responseText;
-                  const lines = responseText.split('\n');
-                  const tableBody = document.querySelector(`#${config.tableId} tbody`);
-                  lines.forEach(line => {
-                      if (line.trim()!== '') {
-                          const [name, link] = line.split(',');
-                          const row = document.createElement('tr');
-                          const nameCell = document.createElement('td');
-                          const linkCell = document.createElement('td');
-                          const anchor = document.createElement('a');
-                          anchor.href = link;
-                          anchor.textContent = name;
-                          linkCell.appendChild(anchor);
-                          row.appendChild(linkCell);
-                          tableBody.appendChild(row);
-}});}else {/*请求内容*/console.error(`请求 ${config.filePath} 文件失败，状态码: 1145141919810`, xhr.status);}}};xhr.send();});
+  const apiUrl = `https://api.github.com/users/oneblockh/repos`;
+  fetch(apiUrl)
+    .then(response => {
+        if (!response.ok) {throw new Error('网络响应不正常');}return response.json();})
+          .then(data => {
+        const tableBody = document.querySelector('#repo-table tbody');
+        tableBody.innerHTML = '';
+        data.forEach(repo => {
+          const row = document.createElement('tr');
+          const nameCell = document.createElement('td');
+          const descCell = document.createElement('td');
+          const linkCell = document.createElement('td');
+          nameCell.textContent = repo.name;
+          descCell.textContent = repo.description || '无描述';
+          const link = document.createElement('a');
+          link.href = repo.html_url;
+          link.textContent = '访问';
+          linkCell.appendChild(link);
+          row.appendChild(nameCell);
+          row.appendChild(descCell);
+          row.appendChild(linkCell);
+          tableBody.appendChild(row);
+          });}).catch(error => {console.error('获取数据时出错:', error);});
 </script>
 <div class="obh-web" align="center"><p style="color:blue;">.</p><a href="https://github.com/oneblockh/oneblockh.github.io/tree/main">关于网站项目</a><p style="color: red">by_oneblockh</p></div></body></html>
