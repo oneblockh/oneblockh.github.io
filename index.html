@@ -14,20 +14,21 @@ body {
     font-family: Arial, sans-serif;
     transition:color 0.5s ease;
 }
-.page{background-color:hsla(0, 0%, 47.1%, 0.5);width:160px;align-items:center;align:center;border-radius: 11px;margin: 1em auto 1em;padding: 5px 11px;box-shadow: 7px 3px 25px 11px rgba(201, 196, 196, 0.25);backdrop-filter: blur(1.7px) brightness(100%);}
+.page{background-color:hsla(0, 0%, 47.1%, 0.5);width:160px;align-items:center;align:center;border-radius: 11px;margin: 0 auto;padding: 5px 11px;box-shadow: 7px 3px 25px 11px rgba(201, 196, 196, 0.25);backdrop-filter: blur(1.7px) brightness(100%);}
 .txt{margin:0px;}
-.bh:hover,td a:hover{border-radius: 3px;box-shadow: 7px 3px 25px 11px rgba(201, 196, 196, 0.25);}
+.bh:hover,td a:hover{border-radius: 3px;box-shadow: 7px 3px 25px 11px rgba(201, 196, 196, 0.25);border: 1px solid #000000;}
 .projectlists{max-width: 100%;max-height: 50%; overflow-y: auto;}
 #time-display {font-size: 25px;font-weight: bold;text-align: center;}
 #date-display {font-size: 15px;font-weight: bold;text-align: center;}
-#theme-toggle {background-color:#00000000;transition:color 0.5s ease;border-radius: 3px;}
+#theme-toggle {background-color:#00000000;transition:color 0.5s ease;border-radius: 3px;color: #000000;border: 1px solid #000000;}
 #theme-toggle:hover{box-shadow: 7px 3px 25px 11px rgba(201, 196, 196, 0.25);}
 body.light {background-color: #ffffff;color: #000000;}
 body.dark {background-color: #333333;color: #ffffff;}
 body.light #theme-toggle {color: #000000;border: 1px solid #000000;}
 body.dark #theme-toggle {color: #ffffff;border: 1px solid #ffffff;}
-body.light .bh:hover {border: 1px solid #000000;}
-body.dark .bh:hover {border: 1px solid #ffffff;}
+body.light .bh:hover,body.light td a:hover{border: 1px solid #000000;}
+body.dark .bh:hover,body.dark td a:hover{border: 1px solid #ffffff;}
+table,td{border: 1px solid #000000;border-radius: 3px;}
 body.light table,body.light td{border: 1px solid #000000;border-radius: 3px;}
 body.dark table,body.dark td{border: 1px solid #ffffff;border-radius: 3px;}
 body.light td{color: #000000;}
@@ -37,7 +38,7 @@ body.dark td {color: #ffffff;}
 <body>
   <p style="color:#00000000;font-size:3px;">.</p>
   <h1 style="font-size: 20px;overflow: hidden;" align="center">oneblockh的个人主页</h1>
-  <div style="display:flex;margin: 1em auto 1em;width:320px;">
+  <div style="display:flex;margin: 0 auto;width:320px;">
     <div>
       <div class="page">
         <div style="display:flex;overflow: hidden;">
@@ -54,6 +55,7 @@ body.dark td {color: #ffffff;}
           <button id="theme-toggle" onclick="toggleTheme()" align="center">切换主题</button>
         </div>
       </div>
+      <p class="txt" class="ht">.</p>
       <div class="page">
         <div id="time-display"></div>
         <div id="date-display"></div>
@@ -71,6 +73,7 @@ body.dark td {color: #ffffff;}
       <a href="https://github.com/oneblockh" class="bh">仓库</a> 
     </div>
   </div>
+  <p class="txt" style="color:#00000000;">.</p>
   <div class="page" style="width:75%;" align="center"><div class="projectlists">
     <h3>项目或作品和资源</h3>
   <table id="repo-table" border="1" style="width:95%;text-align: center;" ><tbody></tbody></table>
