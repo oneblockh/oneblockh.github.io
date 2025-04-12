@@ -16,8 +16,8 @@ body {
 }
 .page{background-color:hsla(0, 0%, 47.1%, 0.5);width:160px;align-items:center;align:center;border-radius: 11px;margin: 0 auto;padding: 5px 11px;box-shadow: 7px 3px 25px 11px rgba(201, 196, 196, 0.25);backdrop-filter: blur(1.7px) brightness(100%);}
 .txt{margin:0px;}
-.bh:hover,td a:hover{border-radius: 3px;box-shadow: 7px 3px 25px 11px rgba(201, 196, 196, 0.25);border: 1px solid #000000;}
-.projectlists{max-width: 100%;max-height: 50%; overflow-y: auto;}
+.bh:hover{border-radius: 3px;box-shadow: 7px 3px 25px 11px rgba(201, 196, 196, 0.25);border: 1px solid #000000;transform: translateY(-3px);}
+.projectlists{max-width: 100%;max-height: 48%; overflow-y: auto;}
 #time-display {font-size: 25px;font-weight: bold;text-align: center;}
 #date-display {font-size: 15px;font-weight: bold;text-align: center;}
 #theme-toggle {background-color:#00000000;transition:color 0.5s ease;border-radius: 3px;color: #000000;border: 1px solid #000000;}
@@ -26,13 +26,12 @@ body.light {background-color: #ffffff;color: #000000;}
 body.dark {background-color: #333333;color: #ffffff;}
 body.light #theme-toggle {color: #000000;border: 1px solid #000000;}
 body.dark #theme-toggle {color: #ffffff;border: 1px solid #ffffff;}
-body.light .bh:hover,body.light td a:hover{border: 1px solid #000000;}
-body.dark .bh:hover,body.dark td a:hover{border: 1px solid #ffffff;}
-table,td{border: 1px solid #000000;border-radius: 3px;}
-body.light table,body.light td{border: 1px solid #000000;border-radius: 3px;}
-body.dark table,body.dark td{border: 1px solid #ffffff;border-radius: 3px;}
-body.light td{color: #000000;}
-body.dark td {color: #ffffff;}
+.repo-card h2 a:hover{border: 1px solid #000000;border-radius: 3px;}
+body.light .bh:hover,body.light .repo-card h2 a:hover{border: 1px solid #000000;border-radius: 3px;}
+body.dark .bh:hover,body.dark .repo-card h2 a:hover{border: 1px solid #ffffff;border-radius: 3px;}
+#repo-container{display: flex;flex-wrap: wrap;gap: 20px;}
+.repo-card {background-color:hsla(0, 0%, 47.1%, 0.75);border-radius: 0.5rem;box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);padding: 1.5rem;margin-bottom: 1.5rem;transition: all 0.3s ease;flex: 1 1 calc(33.33% - 20px);min-width: 200px;box-sizing: border-box;}
+.repo-card:hover {transform: translateY(-3px);box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);}
 .obh-web{background-color:hsla(0, 0%, 47.1%, 0.5);color: #00000000;width: 125px;justify-content: space-between;align-items: center;display: flex;margin: 1em auto 1em;border-radius: 11px;}
 </style>
 <body>
@@ -41,7 +40,7 @@ body.dark td {color: #ffffff;}
   <div style="display:flex;margin: 0 auto;width:320px;">
     <div>
       <div class="page">
-        <div style="display:flex;overflow: hidden;">
+        <div style="display: inline-flex;overflow: hidden;">
           <img src="obh.png" alt="oneblockh" width="50" height="50" style="border-radius: 11px;">
           <h1 style="font-size: 20px;">oneblockh</h1>
         </div>
@@ -55,7 +54,7 @@ body.dark td {color: #ffffff;}
           <button id="theme-toggle" onclick="toggleTheme()" align="center">切换主题</button>
         </div>
       </div>
-      <p class="txt" class="ht">.</p>
+      <p class="txt" style="color:#00000000;">.</p>
       <div class="page">
         <div id="time-display"></div>
         <div id="date-display"></div>
@@ -68,15 +67,13 @@ body.dark td {color: #ffffff;}
       <br>
       <a href="https://space.bilibili.com/3546635246242772/dynami" class="bh">动态</a>
       <br>
-      <a href="https://github.com/oneblockh" class="bh">主页</a>
-      <br>
-      <a href="https://github.com/oneblockh" class="bh">仓库</a> 
+      <a href="https://github.com/oneblockh?tab=repositories" class="bh">仓库</a> 
     </div>
   </div>
   <p class="txt" style="color:#00000000;">.</p>
   <div class="page" style="width:75%;" align="center"><div class="projectlists">
-    <h3>项目或作品和资源</h3>
-  <table id="repo-table" border="1" style="width:95%;text-align: center;" ><tbody></tbody></table>
+    <h3>项目仓库或作品和资源</h3>
+    <div id="repo-container"></div>
   </div></div>
 <script>
   /*主题切换*/
@@ -110,28 +107,33 @@ body.dark td {color: #ffffff;}
 </script>
 <script>
   /*内容获取器*/
-  const apiUrl = `https://api.github.com/users/oneblockh/repos`;
-  fetch(apiUrl)
-    .then(response => {
-        if (!response.ok) {throw new Error('网络响应不正常');}return response.json();})
-          .then(data => {
-        const tableBody = document.querySelector('#repo-table tbody');
-        tableBody.innerHTML = '';
-        data.forEach(repo => {
-          const row = document.createElement('tr');
-          const nameCell = document.createElement('td');
-          const descCell = document.createElement('td');
-          const linkCell = document.createElement('td');
-          nameCell.textContent = repo.name;
-          descCell.textContent = repo.description || '无描述';
-          const link = document.createElement('a');
-          link.href = repo.html_url;
-          link.textContent = '访问';
-          linkCell.appendChild(link);
-          row.appendChild(nameCell);
-          row.appendChild(descCell);
-          row.appendChild(linkCell);
-          tableBody.appendChild(row);
-          });}).catch(error => {console.error('获取数据时出错:', error);});
+  const repoContainer = document.getElementById('repo-container');
+  async function fetchRepositories() {
+    try {
+      const response = await fetch('https://api.github.com/users/oneblockh/repos');
+      if (!response.ok) {throw new Error('请求失败，状态码：' + response.status);}
+      const repositories = await response.json();
+        repositories.forEach(repo => {
+          const card = document.createElement('div');
+            card.classList.add('repo-card');
+            const title = document.createElement('h2');
+            const link = document.createElement('a');
+            link.href = repo.html_url;
+            link.textContent = repo.name;
+            title.appendChild(link);
+            const description = document.createElement('p');
+            description.textContent = repo.description || '暂无仓库描述';
+            card.appendChild(title);
+            card.appendChild(description);
+            repoContainer.appendChild(card);
+            });
+          } catch (error) {
+            console.error('获取仓库信息时出错：', error);
+            const errorMessage = document.createElement('p');
+            errorMessage.textContent = '获取仓库信息时出错，请稍后重试。';
+            repoContainer.appendChild(errorMessage);
+            }
+        }
+        fetchRepositories();
 </script>
-<div class="obh-web" align="center">.<a href="https://github.com/oneblockh/oneblockh/" class="bh">by_oneblockh</a>.</div></body></html>
+<div class="obh-web" align="center">.<a href="https://github.com/oneblockh/" class="bh">by_oneblockh</a>.</div></body></html>
