@@ -1,4 +1,4 @@
-<html lang="zh"><title>oneblockh</title><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><!页面>
+<!DOCTYPE html><html lang="zh"><title>oneblockh</title><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><!页面>
 <head><style>
 body {
     height: 100%;
@@ -21,61 +21,61 @@ body {
 #time-display {font-size: 25px;font-weight: bold;text-align: center;}
 #date-display {font-size: 15px;font-weight: bold;text-align: center;}
 #theme-toggle {background-color:#00000000;transition:color 0.5s ease;border-radius: 3px;color: #000000;border: 1px solid #000000;}
-#theme-toggle:hover{box-shadow: 7px 3px 25px 11px rgba(201, 196, 196, 0.25);}
+#theme-toggle:hover,.repo-card h2 a:hover{box-shadow: 7px 3px 25px 11px rgba(201, 196, 196, 0.25);}
 body.light {background-color: #ffffff;color: #000000;}
 body.dark {background-color: #333333;color: #ffffff;}
 body.light #theme-toggle {color: #000000;border: 1px solid #000000;}
 body.dark #theme-toggle {color: #ffffff;border: 1px solid #ffffff;}
-.repo-card h2 a:hover{border: 1px solid #000000;border-radius: 3px;}
-body.light .bh:hover,body.light .repo-card h2 a:hover{border: 1px solid #000000;border-radius: 3px;}
-body.dark .bh:hover,body.dark .repo-card h2 a:hover{border: 1px solid #ffffff;border-radius: 3px;}
+.repo-card h2 a:hover,.repo-card:hover{border: 1px solid #000000;border-radius: 3px;}
+body.light .bh:hover,body.light .repo-card h2 a:hover,body.light .repo-card:hover{border: 1px solid #000000;border-radius: 3px;}
+body.dark .bh:hover,body.dark .repo-card h2 a:hover,body.dark .repo-card:hover{border: 1px solid #ffffff;border-radius: 3px;}
 #repo-container{display: flex;flex-wrap: wrap;gap: 20px;}
 .repo-card {background-color:hsla(0, 0%, 47.1%, 0.75);border-radius: 0.5rem;box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);padding: 1.5rem;margin-bottom: 1.5rem;transition: all 0.3s ease;flex: 1 1 calc(33.33% - 20px);min-width: 200px;box-sizing: border-box;}
-.repo-card:hover {transform: translateY(-3px);box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);}
+.repo-card:hover {transform: translateY(-3px);box-shadow: 7px 3px 25px 11px rgba(201, 196, 196, 0.25);}
 .obh-web{background-color:hsla(0, 0%, 47.1%, 0.5);color: #00000000;width: 125px;justify-content: space-between;align-items: center;display: flex;margin: 1em auto 1em;border-radius: 11px;}
 </style>
 <body>
   <p style="color:#00000000;font-size:3px;">.</p>
-  <h1 style="font-size: 20px;overflow: hidden;" align="center">oneblockh的个人主页</h1>
-  <div style="display:flex;margin: 0 auto;width:320px;">
+  <h3 style="overflow: hidden;" align="center">oneblockh的个人主页</h3>
+  <div style="display:flex;margin: 0 auto;width:320px;gap: 3px;">
     <div>
       <div class="page">
         <div style="display: inline-flex;overflow: hidden;">
           <img src="obh.png" alt="oneblockh" width="50" height="50" style="border-radius: 11px;">
-          <h1 style="font-size: 20px;">oneblockh</h1>
+          <h3>oneblockh</h3>
         </div>
           <p class="txt" align="center">hello world</p>
           <p class="txt" align="center">正在学习...</p>
         <div align="center">
-          <a href="https://github.com/oneblockh"><img src="github.png" alt="github" width="32" height="32" class="bh"><!github></a>
-          <a href="https://space.bilibili.com/3546635246242772"><img src="bilibili.png" alt="github" width="32" height="32" class="bh"><!bilibili></a>
+          <a href="https://github.com/oneblockh"><img src="github.png" alt="github" width="32" height="32" class="bh" title="github"><!github></a>
+          <a href="https://space.bilibili.com/3546635246242772"><img src="bilibili.png" alt="github" width="32" height="32" class="bh" title="bilibili"><!bilibili></a>
         </div>
         <div align="center">
           <button id="theme-toggle" onclick="toggleTheme()" align="center">切换主题</button>
         </div>
       </div>
-      <p class="txt" style="color:#00000000;">.</p>
+      <br>
       <div class="page">
         <div id="time-display"></div>
         <div id="date-display"></div>
       </div>
     </div>
-    <p style="color:#00000000;">.</p>
     <div class="page" align="center">
-      <h3>导航</h3>
+      <h3>向导</h3>
       <a href="https://oneblockh.github.io/" class="bh">当前页面</a>
-      <br>
+      <div style="margin: 8px;"></div>
       <a href="https://space.bilibili.com/3546635246242772/dynami" class="bh">动态</a>
-      <br>
+      <div style="margin: 8px;"></div>
       <a href="https://github.com/oneblockh?tab=repositories" class="bh">仓库</a> 
     </div>
   </div>
-  <p class="txt" style="color:#00000000;">.</p>
+  <br>
   <div class="page" style="width:75%;" align="center"><div class="projectlists">
     <h3>项目仓库或作品和资源</h3>
     <div id="repo-container"></div>
   </div></div>
 <script>
+  console.log ("oneblockh")
   /*主题切换*/
   function toggleTheme() {
     var body = document.getElementsByTagName('body')[0];
