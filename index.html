@@ -1,96 +1,73 @@
-<!DOCTYPE html><html lang="zh"><title>oneblockh</title><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><!页面>
-  <head>
-    <style>
-      body {
-        height: 100%;
-        width: 100%;
-        background: url('background.png');
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        font-family:HarmonyOS Sans SC,Arial, sans-serif;
-        align-items: center;
-        margin: 0;
-        padding: 0;
-        transition: color 0.5s ease;
-      }
-      .page {
-        background-color: hsla(0, 0%, 47.1%, 0.5);
-        width: 160px;
-        align-items: center;
-        align: center;
-        border-radius: 11px;
-        margin: 0 auto;
-        padding: 5px 11px;
-        box-shadow: 7px 3px 25px 11px rgba(201, 196, 196, 0.25);
-        backdrop-filter: blur(1.7px) brightness(100%);
-      }
-      .txt {
-        margin: 0px;
-      }
-      .bh:hover {
-        border-radius: 3px;
-        box-shadow: 7px 3px 25px 11px rgba(201, 196, 196, 0.25);
-        border: 1px solid #000000;
-        transform: translateY(-3px);
-      }
-      .projectlists {
-        max-width: 100%;
-        max-height: 48%;
-        overflow-y: auto;
-      }
-      #time-display {
-        font-size: 25px;
-        font-weight: bold;
-        text-align: center;
-      }
-      #date-display {
+<!DOCTYPE html><html lang="zh"><meta charset="utf-8"><title>oneblockh</title><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+  <style>
+    html{
+      width: 100%;
+      height: 99%;
+    }
+    body {
+      width: 100%;
+      height: 100%;
+      background: #f0f0f0 url('background.png') no-repeat center center;
+      background-size: cover;
+      font-family:HarmonyOS Sans SC,Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      transition: color 0.5s ease;
+    }
+    .page {
+      background-color: rgba(120,120,120,0.5);
+      border-radius: 11px;
+      margin: 0 auto 0;
+      padding: 5px 11px;
+      box-shadow: 7px 3px 25px 11px rgba(201, 196, 196, 0.25);
+      backdrop-filter: blur(1.7px) brightness(100%);
+      filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=1.7);
+      text-align: center;
+    }
+    #time-display{
+      font-size: 25px;
+      font-weight: bold;
+      text-align: center;
+    }
+    #date-display{
         font-size: 15px;
         font-weight: bold;
         text-align: center;
-      }
-      #theme-toggle {
-        background-color: #00000000;
-        transition: color 0.5s ease;
-        border-radius: 3px;
-        color: #000000;
-        border: 1px solid #000000;
-      }
-      #theme-toggle:hover{
-        box-shadow: 7px 3px 25px 11px rgba(201, 196, 196, 0.25);
-      }
-      body.light {
-        background-color: #ffffff;
-        color: #000000;
-      }
-      body.dark {
-        background-color: #333333;
-        color: #ffffff;
-      }
-      body.light #theme-toggle {
-        color: #000000;
-        border: 1px solid #000000;
-      }
-      body.dark #theme-toggle {
-        color: #ffffff;
-        border: 1px solid #ffffff;
-      }
-      .card a:hover,.card a h3:hover,.card a p:hover{
-        border: 1px solid #000000;
-        border-radius: 3px;
-      }
-      body.light .bh:hover,body.light .card a:hover,body.light .card a h3:hover,body.light .card a p:hover{
-        border: 1px solid #000000;
-        border-radius: 3px;
-      }
-      body.dark .bh:hover,body.dark .card a:hover,body.dark .card a h3:hover,body.dark .card a p:hover{
-        border: 1px solid #ffffff;
-        border-radius: 3px;
-      }
-      .card a{
+    }
+    #theme-toggle {
+      background-color: transparent;
+      border-radius: 3px;
+      color: #000000;
+      border: 1px solid #000000;
+      top: -3px;
+    }
+    body.light {
+      background-color: #ffffff;
+      color: #000000;
+    }
+    body.dark {
+      background-color: #333333;
+      color: #ffffff;
+    }
+    body.light #theme-toggle {
+      color: #000000;
+      border: 1px solid #000000;
+    }
+    body.dark #theme-toggle {
+      color: #ffffff;
+      border: 1px solid #ffffff;
+    }
+    .bh:hover {
+      border-radius: 3px;
+      box-shadow: 7px 3px 25px 11px rgba(201, 196, 196, 0.25);
+      border: 1px solid #000000;
+      transform: translateY(-3px);
+      position: relative;
+    }
+    .card a{
         width: 280px;
         height: 100px;
-        background-color: hsla(0, 0%, 47.1%, 0.75);
         display: block;
         border-radius: 0.5rem;
         box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
@@ -98,12 +75,21 @@
         transition: all 0.3s ease;
         flex: 1 1 calc(25% - 20px);
         box-sizing: border-box;
-      }
-      .card a:hover{
-        box-shadow: 7px 3px 25px 11px rgba(201, 196, 196, 0.25);
-        transform: translateY(-3px);
-      }
-      .obh-web {
+        border: 1px solid #000000;
+    }
+    .card a:hover{
+      box-shadow: 7px 3px 25px 11px rgba(201, 196, 196, 0.25);
+      transform: translateY(-3px);
+    }
+    body.light .bh:hover,body.light .card a{
+      border: 1px solid #000000;
+      border-radius: 3px;
+    }
+    body.dark .bh:hover,body.dark .card a{
+      border: 1px solid #ffffff;
+      border-radius: 3px;
+    }
+    .obh-web {
         background-color: hsla(0, 0%, 47.1%, 0.5);
         color: #00000000;
         width: 125px;
@@ -112,89 +98,75 @@
         display: flex;
         margin: 1em auto 1em;
         border-radius: 11px;
-      }
-    </style>
-  <body>
-    <p style="color:#00000000;font-size:3px;">.</p>
-    <h3 style="overflow: hidden;" align="center">oneblockh的个人主页</h3>
-    <div style="display:flex;margin: 0 auto;width:320px;gap: 3px;">
-      <div>
-        <div class="page">
-          <div style="display: inline-flex;overflow: hidden;">
-            <img src="obh.png" alt="oneblockh" width="50" height="50" style="border-radius: 11px;">
-            <h3>oneblockh</h3>
-          </div>
-          <p class="txt" align="center">hello world</p>
-          <p class="txt" align="center">正在学习...</p>
-          <div style="height: 3px;"></div>
-          <div align="center">
-            <a href="https://github.com/oneblockh"><img src="github.png" alt="github" width="32" height="32" class="bh"title="github"><!github></a>
-            <a href="https://space.bilibili.com/3546635246242772"><img src="bilibili.png" alt="github" width="32" height="32" class="bh" title="bilibili"><!bilibili></a>
-          </div>
-          <div style="height: 3px;"></div>
-          <div align="center">
-            <button id="theme-toggle" onclick="toggleTheme()" align="center">切换主题</button>
-          </div>
-        </div>
-        <br>
-        <div class="page">
-          <div id="time-display"></div>
-          <div id="date-display"></div>
-        </div>
-      </div>
-      <div class="page" align="center">
-        <h3>向导</h3>
-        <a href="https://oneblockh.github.io/" class="bh" title="oneblockh">当前页面</a>
-        <div style="margin: 8px;"></div>
-        <a href="https://space.bilibili.com/3546635246242772/dynami" class="bh" title="B站动态">动态</a>
-        <div style="margin: 8px;"></div>
-        <a href="https://github.com/oneblockh?tab=repositories" class="bh" title="github仓库">仓库</a>
-        <div style="margin: 8px;"></div>
-        <a href="https://github.com/oneblockh.github.io/" class="bh" title="网站源码">网站源码</a>
-        <div style="margin: 8px;"></div>
-        <a href="https://oneblockh.github.io/oneblockh web view emulator.html" class="bh" title="在线网页查看器">网页模拟查看器</a>
-      </div>
+    }
+  </style>
+</head>
+<body>
+  <p style="color:transparent;font-size:3px;">.</p>
+  <h3 style="overflow: hidden;" align="center">oneblockh的个人主页</h3>
+  <div style="display:flex;width: 75%;gap:11px" class="page">
+    <img alt="oneblockh" width="100px" height="100px" src="obh.png" style="border-radius: 11px;vertical-align:middle;">
+    <div style="display:inline-block;vertical-align:middle;text-align:left;">
+      <h3 style="margin: 3px;">oneblockh</h3>
+      <p style="margin: 3px;">hello world,正在学习...</p>
+      <a href="https://github.com/oneblockh"><img src="github.png" alt="github" width="32" height="32" class="bh" title="github"><!github></a>
+      <a href="https://space.bilibili.com/3546635246242772"><img src="bilibili.png" alt="bilibili" width="32" height="32" class="bh" title="bilibili"><!bilibili></a>
+      <button id="theme-toggle" onclick="toggleTheme()" align="center">切换主题</button>
     </div>
-    <br>
-    <div class="page" align="center" style="width: 300px;">
-      <div class="projectlists">
-        <h3>项目、作品和资源</h3>
-        <div class="card" style="width: 300px;">
-          <a href="https://oneblockh.github.io/">
-            <div style="height: 3px;"></div>
+  </div>
+  <br>
+  <br>
+  <div style="width: 75%;text-align:center;" class="page">
+    <h3 align="center">导航栏</h3>
+    <div style="display: flex;flex-wrap: wrap;">
+      <a href="https://oneblockh.github.io/" class="bh" title="oneblockh">当前页面</a>
+      <div style="margin: 8px;gap:11px;"></div>
+      <a href="https://space.bilibili.com/3546635246242772/dynami" class="bh" title="B站动态">动态</a>
+      <div style="margin: 8px;gap:11px;"></div>
+      <a href="https://github.com/oneblockh?tab=repositories" class="bh" title="github仓库">仓库</a>
+      <div style="margin: 8px;gap:11px;"></div>
+      <a href="https://github.com/oneblockh.github.io/" class="bh" title="网站源码">网站源码</a>
+      <div style="margin: 8px;gap:11px;"></div>
+      <a href="https://oneblockh.github.io/oneblockh web view emulator.html" class="bh" title="在线网页查看器">网页模拟查看器</a>
+    </div>
+  </div>
+  <br>
+  <div style="width: 75%;text-align:center;" class="page">
+    <h3 align="center">作品</h3>
+    <div style="display: flex;">
+      <div class="card" style="width: 300px;">
+        <a href="https://oneblockh.github.io/">
+          <div style="height: 3px;"></div>
             <h3>oneblockh的个人网站</h3>
             <p>个人主页</p>
           </a>
-        </div>
-        <br>
-        <div class="card" style="width: 300px;">
-          <a href="https://oneblockh.github.io/oneblockh web view emulator.html">
-            <div style="height: 3px;"></div>
-            <h3>oneblockh web view emulator</h3>
-            <p>一个在线网页查看器</p>
-          </a>
-        </div>
-        <br>
-        <div class="card" style="width: 300px;">
-          <a href="https://github.com/oneblockh?tab=repositories">
-            <div style="height: 3px;"></div>
-            <h3>更多</h3>
-            <p>...</p>
-          </a>
-        </div>
+      </div>
+      <br>
+      <div class="card" style="width: 300px;">
+            <a href="https://oneblockh.github.io/oneblockh web view emulator.html">
+              <div style="height: 3px;"></div>
+              <h3>oneblockh web view emulator</h3>
+              <p>一个在线网页查看器</p>
+            </a>
       </div>
     </div>
-    <script>
-      console.log("oneblockh");
-      /*主题切换*/
-      function toggleTheme() {
-        var body = document.getElementsByTagName('body')[0];
-        if (body.className === 'light') { body.className = 'dark'; }
-        else if (body.className = 'dark'){ body.className = 'light' }
-        else{body.className === 'light'}
+  </div>
+  <br>
+  <div style="width: 125px;text-align:center;" class="page">
+    <div id="time-display"></div>
+    <div id="date-display"></div>
+  </div>
+  <script>
+    function toggleTheme() {
+      var body = document.getElementsByTagName('body')[0];
+      if (body.className === 'light') {
+        body.className = 'dark';
+      } else {
+        body.className = 'light';
       }
-    </script>
-    <script>
+    }
+  </script>
+  <script>
       /*时间*/
       function updateTime() {
         const timeDisplay = document.getElementById('time-display');
@@ -220,6 +192,6 @@
       setInterval(updateDate, 1000);
       updateDate();
     </script>
-    <div class="obh-web" align="center">.<a href="https://github.com/oneblockh/" class="bh">by_oneblockh</a>.</div>
-  </body>
+  <div class="obh-web" align="center">.<a href="https://github.com/oneblockh/" class="bh">by_oneblockh</a>.</div>
+</body>
 </html>
