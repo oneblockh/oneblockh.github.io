@@ -106,9 +106,6 @@
         color: #ffffff;
         transition: color 0.3s ease;
     }
-    .obh-web-icon{
-      box-shadow: 7px 3px 25px 11px rgba(201, 196, 196, 0.25);
-    }
     .obh-web {
         background-color: hsla(0, 0%, 47.1%, 0.5);
         color: #00000000;
@@ -291,34 +288,18 @@
             align-items: center;
             height: 200px;
         }
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
-        }
+        @keyframes spin {to {transform: rotate(360deg);}}
         /* 响应式设计 */
         @media (max-width: 768px) {
-            .header {
-                padding: 2rem 1rem;
-            }
-
-            .header h1 {
-                font-size: 2rem;
-            }
-
-            .file-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .markdown-container {
-                padding: 1rem;
-            }
+            .header {padding: 2rem 1rem;}
+            .header h1 {font-size: 2rem;}
+            .file-grid {grid-template-columns: 1fr;}
+            .markdown-container {padding: 1rem;}
         }
   </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script src="https://cdn.jsdelivr.net/npm/marked@12.0.0/marked.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/dist/highlight.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/lib/languages/javascript.min.js"></script>
 </head>
 <body>
   <p style="color:transparent;font-size:3px;">.</p>
@@ -385,9 +366,7 @@
         <div id="markdownView" style="display: none;">
             <div class="markdown-container glass-container">
                 <div class="markdown-toolbar">
-                    <button id="backButton" class="back-button">
-                        <i class="fas fa-arrow-left"></i> 返回文章列表
-                    </button>
+                    <button id="backButton" class="back-button"><i class="fas fa-arrow-left"></i> 返回文章列表</button>
                     <h3 id="currentFileName" style="color: var(--bg);"></h3>
                 </div>
                 <div class="markdown-content" id="markdownContent"></div>
@@ -476,7 +455,6 @@
                 card.addEventListener('click', () => {
                     showMarkdownContent(filename, meta.content);
                 });
-
                 fileGrid.appendChild(card);
             });
         }
