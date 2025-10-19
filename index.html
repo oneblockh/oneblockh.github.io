@@ -2,9 +2,8 @@
 <head>
   <style>
     html{width: 100%;height: 99%;}
-    body {width: 99.3%;height: 100%;background: #f0f0f0 url('background.png') center center;background-size: cover;background-repeat: repeat;font-family:HarmonyOS Sans SC,Arial, sans-serif;transition: background-color 0.5s ease,color 0.5s ease;}
+    body {width: 99.3%;height: 100%;background: #f0f0f0 url('background.png') center center;background-size: cover;background-repeat: repeat;font-family:Segoe UI,Arial, sans-serif;transition: background-color 0.5s ease,color 0.5s ease;}
     .page {background-color: rgba(125,125,125,0.5);border-radius: 11px;margin: 0 auto 0;padding: 5px 11px;box-shadow: 11px 8px 25px 11px rgba(25,25,25,0.5);backdrop-filter: blur(2.5px) brightness(100%);filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=2.5);border: 1px solid rgba(255, 255, 255, 0.2);}
-    #time-display,#date-display{text-align: center;}
     body.light {background-color: #ffffff;color: #000000;}
     body.dark {background-color: #333333;color: #ffffff;}
     #theme-toggle,body.light #theme-toggle{background-color: transparent;border-radius: 3px;color: #000000;border: 1px solid #000000;top: -3px;}
@@ -13,12 +12,13 @@
     .bh:hover {border-radius: 11px;box-shadow: 11px 8px 25px 11px rgba(225, 225, 225, 0.5);border: 1px solid #000000;transform: translateY(-3px);position: relative;padding: 3px;}
     .card {display: flex;flex-wrap: wrap;gap: 11px;}
     .card div{border-radius: 11px;border: 1px solid rgba(0, 0, 0);padding:11px 11px;box-shadow: 7px 7px 11px 5px rgba(0, 0, 0, 0.25);align-items: center;}
-    .card div:hover{transform: translateY(-3px);box-shadow: 7px 7px 11px 8px rgba(0, 0, 0, 0.5);background-color: rgba(0, 0, 0, 0.125);}
+    .card div:hover,body.light .card div:hover{transform: translateY(-3px);box-shadow: 3px 3px 11px 8px rgba(255, 255, 255, 0.5);background-color: rgba(0, 0, 0, 0.125);}
+    body.dark .card div:hover{box-shadow: 7px 7px 11px 8px rgba(0, 0, 0, 0.8);}
     .card div b {display: flex;gap: 8px;}
     .card div b a,body.light .card div b a{color:#000000;padding: 3px;transition:color 0.5s ease;}
     body.dark .card div b a{color:#ffffff;}
-    body.light .bh:hover,.lan,body.light .lan,.card div,body.light .card div{border: 1px solid #000000;border-radius: 11px;}
-    body.dark .bh:hover,body.dark .lan,body.dark .card div{border: 1px solid #ffffff;}
+    body.light .bh:hover,.card div,body.light .card div{border: 1px solid #000000;border-radius: 11px;}
+    body.dark .bh:hover,body.dark .card div{border: 1px solid #ffffff;}
     .link-svg{width: 32px;height: 32px;}
     .link-svg g g,body.light .link-svg g g{stroke: #000000;stroke-width: 1;}
     body.dark .link-svg g g {stroke: #ffffff;}
@@ -30,14 +30,15 @@
     body.dark .file-card {border: 1px solid #ffffff;}
     .file-card:hover,body.light .file-card:hover {border: 3px solid #000000;transform: translateY(-5px);box-shadow: 7px 7px 25px 11px rgba(255, 255, 255, 0.5);}
     body.dark .file-card:hover {border: 3px solid #ffffff;box-shadow: 7px 7px 25px 11px rgba(0, 0, 0, 0.5);}
-    .file-card::before,body.light .file-card::before {content: '';position: absolute;top: 0;left: 0;width: 4px;height: 100%;background:rgba(0,0 ,0 ,0.5);;transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);}
+    .file-card::before,body.light .file-card::before {content: '';position: absolute;top: 0;left: 0;width: 4px;height: 100%;background:rgba(0,0 ,0 ,0.5);transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);}
     body.dark .file-card::before {background:rgba(255, 255, 255, 0.5);}
     .file-card:hover::before,body.light .file-card:hover::before {width: 100%;background: rgba(0, 0, 0, 0.025);}
     body.dark .file-card:hover::before {background: rgba(255, 255, 255, 0.025);}
-    .file-icon,body.light .file-icon {font-size: 1.75rem;margin-bottom: 1rem;}
+    .file-icon,body.light .file-icon {font-size: 1.75rem;margin-bottom: 1rem;display: flex;}
     .file-title,body.light.file-title  {font-weight: 600;bottom: 0.5rem;}
     .file-desc,body.light .file-desc {font-size: 0.9rem;margin-bottom: 1.5rem;}
     .file-icon,body.light .file-icon,.file-title,body.light.file-title,.file-desc,body.light .file-desc{color:#000000;}
+    .file-icon h3{margin: 0;font-size: 1.2rem;}
     body.dark .file-icon,body.dark .file-title,body.dark .file-desc {color: #ffffff;}
     .markdown-container {max-width: 800px;margin: 0 auto;padding: 2rem;animation: fadeIn 0.6s ease-out;}
     .markdown-toolbar {display: flex;justify-content: space-between;align-items: center;margin-bottom: 1.5rem;padding-bottom: 1rem;border-bottom: 1px solid rgba(0, 0, 0, 0.1);}
@@ -60,29 +61,29 @@
 </head>
 <body>
   <p style="color:transparent;font-size:3px;">.</p>
-  <h3 style="overflow: hidden;" align="center">oneblockh的个人主页和个人blog</h3>
+  <h3 style="overflow: hidden;" align="center">oneblockh的个人网站</h3>
   <div style="display:flex;width: 75%;gap:3px;text-align: center;" class="page">
-    <img alt="oneblockh" width="100px" height="100px" src="obh.png" style="border-radius: 11px;vertical-align:middle;border: 1px solid rgba(255, 255, 255, 0.2);box-shadow: 0px 11px 48px 25px rgba(0, 0, 0, 0.25);">
+    <img alt="oneblockh" width="100px" height="100px" src="obh.png" style="border-radius: 52px;vertical-align:middle;border: 1px solid rgba(255, 255, 255, 0.025);box-shadow: 0 5px 25px 2px rgba(116, 170, 89, 0.8),0 8px 39px 3px rgba(237, 92, 92, 0.5);">
     <div style="width:8px;height: 3px;"></div>
     <div style="display:inline-block;vertical-align:middle;text-align:left;">
       <h3 style="margin: 3px;">oneblockh</h3>
-      <p style="margin: 3px;">hello world,正在学习...</p>
+      <p style="margin: 3px;">嗯，正在学习中...</p>
       <div style="display: flex;">
         <a href="https://github.com/oneblockh"><img src="github.png" alt="github" width="32" height="32" class="bh" title="github"><!--github--></a>
         <div style="width: 3px;height: 11px;"></div>
         <a href="https://space.bilibili.com/3546635246242772"><img src="bilibili.png" alt="bilibili" width="32" height="32" class="bh" title="bilibili"><!--bilibili--></a>
-        <div style="width: 3px;height: 11px;"></div>
+        <div style="width: 5px;height: 11px;"></div>
         <a href="https://space.bilibili.com/3546635246242772/dynami" title="B站动态" class="bh"><svg class="link-svg" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="71.35018" height="71.51448" viewBox="0,0,71.35018,71.51448"><g transform="translate(-204.24727,-144.16524)"><g fill="none" stroke="#000000" stroke-width="0.5" stroke-miterlimit="10"><path d="M240.13106,179.84213c-0.01474,0.00141 -0.03772,0.00487 -0.07098,0.01104c-0.73408,0.13614 -1.75875,0.10953 -3.02989,0.13542c-2.10497,0.04286 -4.8365,0.07111 -7.68061,0.05363c-2.3261,-0.01429 -4.76127,0.02296 -7.07109,0.03304c-3.68042,0.01606 -7.36812,-0.09777 -10.47027,-0.01835c-1.42397,0.03645 -2.72766,-0.00723 -3.83827,-0.00102c-0.91006,0.00509 -1.69036,0.07353 -2.30197,-0.00488c-0.86853,-0.11135 -1.13816,-0.04248 -1.1707,-0.01251c-0.01181,0.01087 0.05959,0.00088 0.08835,-0.0291c0.01373,-0.01431 -0.00293,0.34119 -0.00429,-0.00837c-0.03921,-10.03755 7.85204,-18.20917 17.62558,-18.25182c9.77355,-0.04265 17.72836,8.05982 17.76756,18.09737c0.0002,0.05015 0.00016,0.08583 -0.00008,0.11031"/><path d="M239.99452,180.04934c-0.00127,-0.01475 -0.00453,-0.03776 -0.01039,-0.07108c-0.12942,-0.73529 -0.09345,-1.75968 -0.10772,-3.031c-0.02362,-2.10527 -0.02691,-4.83695 0.01657,-7.68078c0.03555,-2.32588 0.02056,-4.76128 0.03159,-7.0711c0.01758,-3.68042 0.16511,-7.36692 0.11405,-10.46966c-0.02344,-1.42425 0.03216,-2.72748 0.0361,-3.83811c0.00323,-0.91007 -0.05808,-1.69096 0.02592,-2.30183c0.11928,-0.86748 0.05288,-1.13773 0.02321,-1.17054c-0.01076,-0.0119 -0.00142,0.05958 0.02829,0.08861c0.01418,0.01386 -0.34115,-0.00605 0.0084,-0.00422c10.03749,0.05253 18.13664,8.01814 18.08996,17.79166c-0.04668,9.77353 -8.22152,17.65395 -18.259,17.60142c-0.05015,-0.00026 -0.08582,-0.00063 -0.11031,-0.00109"/><path d="M275.34737,179.96154c0.00024,0.02449 0.00027,0.06016 0.00007,0.11032c-0.03921,10.03755 -7.99402,18.14002 -17.76756,18.09737c-9.77355,-0.04265 -17.66479,-8.21427 -17.62558,-18.25181c0.00136,-0.34956 0.01802,0.00594 0.00429,-0.00837c-0.02876,-0.02998 -0.10015,-0.03997 -0.08835,-0.0291c0.03254,0.02996 0.30217,0.09884 1.1707,-0.01251c0.61161,-0.07841 1.39191,-0.00997 2.30197,-0.00488c1.11062,0.00621 2.4143,-0.03747 3.83827,-0.00102c3.10215,0.07942 6.78985,-0.03441 10.47027,-0.01835c2.30982,0.01008 4.74499,0.04733 7.07109,0.03304c2.84411,-0.01748 5.57565,0.01077 7.68061,0.05363c1.27114,0.02588 2.29581,-0.00072 3.02989,0.13542c0.03326,0.00617 0.05624,0.00963 0.07098,0.01104"/><path d="M240.05102,215.42837c-0.02448,0.00046 -0.06015,0.00082 -0.11031,0.00109c-10.03749,0.05253 -18.21233,-7.82789 -18.25901,-17.60142c-0.04668,-9.77353 8.05247,-17.73913 18.08996,-17.79167c0.34955,-0.00183 -0.00578,0.01808 0.0084,0.00422c0.02972,-0.02903 0.03905,-0.10051 0.02829,-0.08861c-0.02966,0.03281 -0.09607,0.30306 0.02321,1.17054c0.084,0.61087 0.02269,1.39177 0.02592,2.30183c0.00394,1.11063 0.05954,2.41386 0.0361,3.83811c-0.05106,3.10275 0.09647,6.78925 0.11405,10.46966c0.01103,2.30982 -0.00396,4.74522 0.03159,7.0711c0.04347,2.84383 0.04019,5.57551 0.01657,7.68078c-0.01427,1.27133 0.02171,2.29571 -0.10772,3.031c-0.00586,0.03332 -0.00912,0.05633 -0.01039,0.07108"/></g></g></svg></a>
         <div style="width: 3px;height: 11px;"></div>
         <a href="https://github.com/oneblockh?tab=repositories" title="github仓库" class="bh"><svg class="link-svg" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24.75784" height="24.62699" viewBox="0,0,24.75784,24.62699"><g transform="translate(-227.56552,-167.90873)"><g fill="none" stroke="#000000" stroke-width="0.5" stroke-miterlimit="10"><path d="M252.07337,170.77653v18.8919c0,1.44329 -0.67063,2.61729 -1.49601,2.61729h-21.2661c-0.82452,0 -1.49572,-1.174 -1.49572,-2.61729v-18.89241c0,-1.44329 0.6712,-2.61729 1.49572,-2.61729h21.2661c0.82539,0 1.49602,1.17451 1.49602,2.6178z" stroke-linecap="butt"/><path d="M244.22508,185.13065v6.21222c0,0.47459 -0.22941,0.86065 -0.51178,0.86065h-7.27499c-0.28206,0 -0.51168,-0.38605 -0.51168,-0.86065v-6.21239c0,-0.47459 0.22961,-0.86065 0.51168,-0.86065h7.27499c0.28236,0 0.51178,0.38622 0.51178,0.86081z" stroke-linecap="butt"/><path d="M238.03998,188.01388l3.96,0.04" stroke-linecap="round"/><path d="M231.95998,174.13721l16.12,-0.04" stroke-linecap="round"/><path d="M231.94,176.22333l16.12,-0.04" stroke-linecap="round"/><path d="M231.94,178.22333l16.12,-0.04" stroke-linecap="round"/></g></g></svg></a>
-        <div style="width: 3px;height: 11px;"></div>
+        <div style="width: 5px;height: 11px;"></div>
         <button id="theme-toggle" onclick="toggleTheme()" align="center">切换主题</button>
       </div>
     </div>
   </div>
   <br>
   <div style="width: 75%;text-align:center;" class="page">
-    <h3 align="center">作品或项目</h3>
+    <h3 align="center"><i class="fas fa-folder-open"></i> 作品或项目</h3>
     <div style="display: flex;flex-wrap: wrap;" class="card">
       <div style="width: 250px;height: 125px;" align="center">
           <h3>oneblockh的个人网站</h3>
@@ -100,19 +101,18 @@
           <p>一个在线html查看器</p>
           <b align="center">
             <b style="width: 39px;height: 11px;"></b>
-            <a href="https://github.com/oneblockh/ohv" class="bh">在线体验</a>
+            <a href="https://oneblockh.github.io/ohv/oneblockh%20html%20view.html" class="bh">在线体验</a>
             <b style="width: 8px;height: 11px;"></b>
-            <a href="https://oneblockh.github.io/ohv/oneblockh%20html%20view.html" class="bh">查看项目</a>
+            <a href="https://github.com/oneblockh/ohv" class="bh">查看项目</a>
           </b>
       </div>
     </div>
   </div>
   <br>
   <div style="width: 75%;" class="page">
-    <h3 align="center">blog</h3>
+    <h3 align="center"><i class="fa-solid fa-blog"></i> blog</h3>
       <div class="container">
         <div id="fileListView">
-          <h3 style="margin-bottom: 1rem;" align="center"><i class="fas fa-folder-open"></i> 文章列表</h3>
             <div class="glass-container" style="padding: 3px 8px;">
                 <div class="file-grid" id="fileGrid">
                 </div>
@@ -131,8 +131,8 @@
     </div>
   <br>
   <div style="width: 125px;text-align:center;" class="page" align="center">
-    <div id="time-display" style="font-size: 25px;font-weight: bold;"></div>
-    <div id="date-display" style="font-size: 15px;font-weight: bold;"></div>
+    <div id="time-display" style="font-size: 25px;font-weight: bold;text-align: center;"></div>
+    <div id="date-display" style="font-size: 15px;font-weight: bold;text-align: center;"></div>
   </div>
   <script>
     /*切换主题*/
@@ -180,11 +180,10 @@
         for (var filename in markdownLibrary) {
             if (!markdownLibrary.hasOwnProperty(filename)) continue;
             var meta = markdownLibrary[filename];
-            var card = document.createElement('div');
+            var card = document.createElement('a');
             card.className = 'file-card animate__animated animate__fadeIn';
-            card.innerHTML ='<div class="file-icon">' +'<i class="fas ' + meta.icon + '"></i>' +'</div>' +'<h3 class="file-title">' + filename.replace('.md', '') + '</h3>' +'<p class="file-desc">' + meta.content.substring(0, 60) + '...</p>';
-            card.addEventListener('click', function(filename, content) {return function() { showMarkdownContent(filename, content); };
-            }(filename, meta.content));fileGrid.appendChild(card);
+            card.innerHTML ='<div class="file-icon">' +'<i class="fas ' + meta.icon + '"></i>' +'<div style="width: 8px;"></div>' +'<h3 class="file-title">' + filename.replace('.md', '') + '</h3>' +'</div>' +'<p class="file-desc">' + meta.content.substring(0, 60) + '...</p>';
+            card.addEventListener('click', function(filename, content) {return function() { showMarkdownContent(filename, content); };}(filename, meta.content));fileGrid.appendChild(card);
         }
     }
     //显示Markdown内容
@@ -222,8 +221,9 @@
                             var contentXhr = new XMLHttpRequest();
                             contentXhr.open('GET', file.download_url, true);
                             contentXhr.onreadystatechange = function() {
-                                if (contentXhr.readyState === 4) {if (contentXhr.status === 200) {markdownLibrary[file.name] = {content: contentXhr.responseText,icon: getFileIcon(file.name),};}loadNextFile();}
-                                };
+                                if (contentXhr.readyState === 4) {if (contentXhr.status === 200) {markdownLibrary[file.name] = {content: contentXhr.responseText,icon: getFileIcon(file.name),};
+                              }loadNextFile();}
+                          };
                             contentXhr.send();
                         } else {loadNextFile();}
                     }
