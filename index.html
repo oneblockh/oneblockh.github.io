@@ -20,21 +20,18 @@
   </style>
   <style>
     .file-grid {display: grid;grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));gap: 1.5rem;margin-top: 3px;}
-    .file-card,body.light .file-card{background-color: #00000000;border-radius: 12px;padding: 1.5rem;box-shadow: 7px 7px 11px 5px rgba(255, 255, 255, 0.25);transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);box-shadow:  0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);border: 1px solid #000000;cursor: pointer;position: relative;overflow: hidden;}
+    .file-card,body.light .file-card{background-color: #00000000;border-radius: 12px;padding: 1.5rem;transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);border: 1px solid #000000;cursor: pointer;position: relative;overflow: hidden;}
     body.dark .file-card {border: 1px solid #ffffff;}
-    .file-card:hover,body.light .file-card:hover {transform: translateY(-5px);box-shadow: 7px 7px 25px 11px rgba(255, 255, 255, 0.5);}
-    .file-card::before,body.light .file-card::before {content: '';position: absolute;top: 0;left: 0;width: 4px;height: 100%;background:rgba(0,0 ,0 ,0.5);transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);}
-    body.dark .file-card::before {background:rgba(255, 255, 255, 0.5);}
-    body.dark .file-card:hover::before {background: rgba(255, 255, 255, 0.25);}
+    .file-card:hover{transform: translateY(-1.1px);box-shadow: 11px 8px 25px 11px rgba(225, 225, 225, 0.5);}
     .file-icon,body.light .file-icon {font-size: 1.75rem;margin-bottom: 1rem;display: flex;}
     .file-title,body.light.file-title  {font-weight: 600;bottom: 0.5rem;}
     .file-desc,body.light .file-desc {font-size: 0.9rem;margin-bottom: 1.5rem;text-align: left;}
     .file-icon,body.light .file-icon,.file-title,body.light.file-title,.file-desc,body.light .file-desc{color:#000000;}
     .file-icon h3{margin: 0;font-size: 1.2rem;}
     body.dark .file-icon,body.dark .file-title,body.dark .file-desc {color: #ffffff;}
-    .markdown-container {max-width: 800px;margin: 0 auto;padding: 2rem;animation: fadeIn 0.6s ease-out;}
-    .markdown-toolbar {display: flex;justify-content: space-between;align-items: center;margin-bottom: 1.5rem;padding-bottom: 1rem;border-bottom: 1px solid rgba(0, 0, 0, 0.1);}
-    .back-button,body.light .back-button {background-color: rgba(0, 0, 0, 0.1);color: #000000;border: none;padding: 0.5rem 1rem;border-radius: 8px;cursor: pointer;transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);display: flex;align-items: center;gap: 0.5rem;}
+    .markdown-container {max-width: 800px;margin: 0 auto;padding: 2rem;animation: fadeIn 0.5s ease-out}
+    .markdown-toolbar {display: flex;justify-content: space-between;align-items: center;margin-bottom: 1.5rem;padding-bottom: 1rem;border-bottom: 1px solid rgba(0, 0, 0, 0.25);}
+    .back-button,body.light .back-button {background-color: rgba(0, 0, 0, 0.1);color: #000000;border:1px solid #00000000;padding: 0.5rem 1rem;border-radius: 8px;cursor: pointer;transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);display: flex;align-items: center;gap: 0.5rem;}
     body.dark .back-button {color: #ffffff;}
     .back-button:hover,body.light .back-button:hover {border: 1px solid #000000;transform: translateX(-1.1px);box-shadow: 11px 8px 25px 11px rgba(225, 225, 225, 0.5);}
     body.dark .back-button:hover {border: 1px solid #ffffff;}
@@ -43,7 +40,7 @@
     body.dark .markdown-content blockquote {border-left: 4px solid #ffffff;}
     .markdown-content h1,.markdown-content h2,.markdown-content h3,.markdown-content h4,.markdown-content h5,.markdown-content h6,body.light .markdown-content h1,body.light .markdown-content h2,body.light.markdown-content h3,body.light .markdown-content h4,body.light .markdown-content h5,body.light.markdown-content h6{color: #000000;margin-top: 1.5em;margin-bottom: 0.8em;font-weight: 600;}
     body.dark .markdown-content h1,body.dark .markdown-content h2,body.dark .markdown-content h3,body.dark .markdown-content h4,body.dark .markdown-content h5,body.dark .markdown-content h6 {color: #ffffff;}
-    .markdown-content pre {background: rgba(30, 41, 59, 0.75);color: #f8fafc;padding: 1rem;border-radius: 8px;overflow-x: auto;margin: 1.5rem 0;}
+    .markdown-content pre {background: rgba(96, 102, 101, 0.5);color: #f8fafc;padding: 1rem;border-radius: 8px;overflow-x: auto;margin: 1.5rem 0;}
     .markdown-content code {-family: 'Fira Code', monospace;font-size: 0.9em;}
     .markdown-content blockquote {padding-left: 1rem;margin: 1.5rem 0;}
     @keyframes fadeIn {from {opacity: 0;transform: translateY(20px);}to {opacity: 1;transform: translateY(0);}}
@@ -146,10 +143,10 @@
       updateDate();
     </script>
     <script>
-    // 初始化Markdown库(blog文章)
+    /* 初始化 */
     var markdownLibrary = {};
     document.addEventListener('DOMContentLoaded', function() {renderFileCards();document.getElementById('backButton').addEventListener('click', showFileList);});
-    //渲染文件卡片
+    /* 渲染文件卡片 */
     function renderFileCards() {
         var fileGrid = document.getElementById('fileGrid');
         fileGrid.innerHTML = '';
@@ -163,25 +160,19 @@
               showMarkdownContent(filename, content); };}(filename, meta.content));fileGrid.appendChild(card);
         }
     }
-    //显示Markdown内容
+    /* 显示blog文章内容 */
     function showMarkdownContent(filename, content) {
         document.getElementById('fileListView').style.display = 'none';
         document.getElementById('markdownView').style.display = 'block';
         document.getElementById('currentFileName').textContent = filename;
         document.getElementById('markdownContent').innerHTML = marked.parse(content);
     }
-    //显示文件列表
+    /* 显示文件列表 */
     function showFileList() {
         document.getElementById('fileListView').style.display = 'block';
         document.getElementById('markdownView').style.display = 'none';
-        // 添加动画效果
-        var cards = document.querySelectorAll('.file-card');
-        for (var i = 0; i < cards.length; i++) {
-            cards[i].classList.add('animate__animated');
-            cards[i].classList.add('animate__fadeIn');
-            cards[i].style.animationDelay = (i * 0.1) + 's';
-        }
     }
+    /*加载真实的Markdown文件*/
     function loadRealMarkdownFiles() {
         var xhr = new XMLHttpRequest();
         xhr.open('GET', 'https://api.github.com/repos/oneblockh/oneblockh.github.io/contents/blog', true);
@@ -211,12 +202,7 @@
         };
         xhr.send();
     }
-    function getFileIcon(filename) {
-        if (filename.indexOf('指南') !== -1) return 'fa-book-open';
-        if (filename.indexOf('API') !== -1) return 'fa-code';
-        if (filename.indexOf('说明') !== -1) return 'fa-file-alt';
-        return 'fa-file';
-    }
+    function getFileIcon(filename) {return 'fa-file';}
     window.addEventListener('load', loadRealMarkdownFiles);
 </script>
 <br>
