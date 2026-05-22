@@ -1,4 +1,4 @@
-##### 个人网站
+##### About
 
 "https://oneblockh.github.io"
 
@@ -12,7 +12,7 @@
 
 ##### 板块
 
-标题 → 个人 → 导航栏 → blog → 时间 → end
+标题 → 个人 → blog → 时间 → end
 
 ##### 网页主要文件名说明
 
@@ -22,4 +22,4 @@
 
 "obh.png"是头像
 
-"blog"是博客文件夹,可以存放Markdown文档
+"blog"是blog文件夹,是存放Markdown文档
