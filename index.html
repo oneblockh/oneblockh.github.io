@@ -4,8 +4,8 @@
     *{transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);}
     body,body.light {background-color: #ababab;color: #000000;}
     body.dark {background-color: #20262c;color: #ffffff;}
-    .block,body.light .block{backdrop-filter:blur(2.5px) brightness(100%) saturate(125%) url(#glass);border-color:rgba(0, 0, 0, 0.8);}
-    .block body.dark{border-color:rgba(255, 255, 255, 0.8);}
+    .block,body.light .block{backdrop-filter:blur(2.5px) brightness(100%) saturate(125%) url(#glass);border: 1px solid rgba(0, 0, 0, 0.8);}
+    body.dark .block{border: 1px solid rgba(255, 255, 255, 0.8);}
     .block_border{border-radius: 25px;border: 1px solid transparent;padding: 3px;}
     .block_border:hover,body.light .block_border:hover{border-radius: 25px;border: 1px solid #000000;box-shadow: 11px 8px 25px 11px rgba(225, 225, 225, 0.5);}
     body.dark .block_border:hover{border: 1px solid #ffffff;}
@@ -35,7 +35,7 @@
 <body>
   <header role="banner">
     <h3 style="margin-top: 25px;padding:8px;" align="center">oneblockh's blog</h3>
-    <div class="block" style="display:flex;margin-top: 25px;padding:16px;border-radius: 25px;border: 1px solid;">
+    <div class="block" style="display:flex;margin-top: 25px;padding:16px;border-radius: 25px;">
       <img alt="oneblockh" width="100px" height="100px" src="https://avatars.githubusercontent.com/u/189672981?v=4&size=64" style="border-radius: 52px;vertical-align:middle;border: 1px solid rgba(125,125,125,0.5);">
       <div style="width: 8px;height: 3px;"></div>
       <div style="display:inline-block;vertical-align:middle;text-align:left;">
@@ -50,13 +50,13 @@
     </div>
   </header>
   <br>
-  <main class="block" style="display: block;padding:25px;border-radius: 25px;border: 1px solid;" role="main">
+  <main class="block" style="display: block;padding:25px;border-radius: 25px;" role="main">
     <div style="display: flex;margin-top: 3px;margin-bottom: 25px;">
       <button id="back_button" class="block_border" style="margin-left: 16px;margin-right: 16px;"><a style="font-size: 1.125rem;">←</a></button>
       <input type="text" id="search_input" class="block_border" placeholder="搜索文章">
       <button id="theme" class="block_border" style="margin-left: 16px;margin-right: 16px;white-space: nowrap;" onclick="change_theme()">☀/☾</button>
     </div>
-    <div style="margin-top: 11px;margin-bottom: 25px;border-top: 1px solid"></div>
+    <div style="margin-top: 11px;margin-bottom: 25px;"></div>
     <div id="bloglist">
       <div id="blog_all_card"></div>
     </div>
@@ -130,7 +130,7 @@
     }
     function load_blog_article() {
         var xhr = new XMLHttpRequest();
-        xhr.open('GET', 'https://api.github.com/repos/oneblockh/oneblockh.github.io/contents/backup', true);
+        xhr.open('GET', 'https://api.github.com/repos/oneblockh/oneblockh.github.io/contents/blog', true);
         xhr.onreadystatechange = function() {
             if (xhr.readyState === 4) {
                 if (xhr.status === 200) {
