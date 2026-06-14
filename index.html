@@ -1,0 +1,165 @@
+<!DOCTYPE html><html lang="zh"><meta http-equiv="content-type" content="text/html; charset=UTF-8"><title>oneblockh</title><meta name="darkreader-lock"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="robots" content="noindex,nofollow">
+<head>
+  <style>
+    *{transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);}
+    body,body.light {background-color: #ababab;color: #000000;}
+    body.dark {background-color: #20262c;color: #ffffff;}
+    .block,body.light .block{backdrop-filter:blur(2.5px) brightness(100%) saturate(125%) url(#glass);border-color:rgba(0, 0, 0, 0.8);}
+    .block body.dark{border-color:rgba(255, 255, 255, 0.8);}
+    .block_border{border-radius: 25px;border: 1px solid transparent;padding: 3px;}
+    .block_border:hover,body.light .block_border:hover{border-radius: 25px;border: 1px solid #000000;box-shadow: 11px 8px 25px 11px rgba(225, 225, 225, 0.5);}
+    body.dark .block_border:hover{border: 1px solid #ffffff;}
+    #blog_all_card {display: grid;grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));gap: 1.25rem;}
+    .blog-card,body.light .blog-card{background-color: transparent;border-radius: 25px;padding: 1.25rem;border: 1px solid #000000;overflow: hidden;}
+    body.dark .blog-card {border: 1px solid #ffffff;}
+    .blog-card:hover{box-shadow: 11px 8px 25px 11px rgba(225, 225, 225, 0.5);}
+    .blog-card h3,body.light .blog-card h3  {bottom: 0.5rem;margin:0;text-align: left;color:#000000;}
+    .blog-card p,body.light .blog-card p {font-size: 0.9rem;text-align: left;color:#000000;}
+    body.dark .blog-card h3,body.dark .blog-card p{color: #ffffff;}
+    #theme,body.light #theme, #back_button,body.light #back_button{background-color: transparent;border-radius: 25px;color: #000000;border: 1px solid #000000;padding: 0 8px;}
+    body.dark #theme{color: #ffffff;border: 1px solid #ffffff;}
+    #search_input,body.light #search_input{width:95%;max-width:500px;min-width: 125px;background-color: transparent;padding: 0.5rem 1rem;display: block;margin: 0 auto;border-radius: 25px;border: 1px solid #000000;}    
+    body.dark #back_button,body.dark #search_input {border: 1px solid #ffffff;color: #ffffff;}
+    svg,body.light svg{fill: #000000;}
+    body.dark svg{fill:#ffffff;}
+    #blog_content blockquote,body.light #blog_content blockquote{border-left: 3px solid #000000;padding-left: 1rem;margin: 1.25rem 0;}
+    body.dark #blog_content blockquote {border-left: 3px solid #ffffff;}
+    #blog_content pre {background: rgba(96, 102, 101, 0.5);color: #f8fafc;padding: 1rem;border-radius: 8px;overflow-x: auto;margin: 1.25rem 0;}
+    table,body.light table{border: 1px solid #000000;border-radius: 11px;}
+    th, td ,body.light th,body.light td {border: 1px solid #000000;padding: 16px;border-radius: 8px;}
+    body.dark table ,body.dark th,body.dark td{border: 1px solid #ffffff;}
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/marked@4.2.5/marked.min.js"></script>
+  <svg style="display: none"><filter id="glass"><feTurbulence type="turbulence" baseFrequency="0.00125" numOctaves="2" result="noise" /><feDisplacementMap in="SourceGraphic" in2="noise" scale="77" /></filter></svg>
+</head>
+<body>
+  <header role="banner">
+    <h3 style="margin-top: 25px;padding:8px;" align="center">oneblockh's blog</h3>
+    <div class="block" style="display:flex;margin-top: 25px;padding:16px;border-radius: 25px;border: 1px solid;">
+      <img alt="oneblockh" width="100px" height="100px" src="https://avatars.githubusercontent.com/u/189672981?v=4&size=64" style="border-radius: 52px;vertical-align:middle;border: 1px solid rgba(125,125,125,0.5);">
+      <div style="width: 8px;height: 3px;"></div>
+      <div style="display:inline-block;vertical-align:middle;text-align:left;">
+        <h3 style="margin: 3px;">oneblockh</h3>
+        <p style="margin: 3px;">Learning...</p>
+        <div style="display: flex;">
+          <a href="https://github.com/oneblockh" width="32" height="32" class="block_border" title="github"><svg alt="github" width="32" height="32" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M24,1.9a21.6,21.6,0,0,0-6.8,42.2c1,.2,1.8-.9,1.8-1.8V39.4c-6,1.3-7.9-2.9-7.9-2.9a6.5,6.5,0,0,0-2.2-3.2C6.9,31.9,9,32,9,32a4.3,4.3,0,0,1,3.3,2c1.7,2.9,5.5,2.6,6.7,2.1a5.4,5.4,0,0,1,.5-2.9C12.7,32,9,28,9,22.6A10.7,10.7,0,0,1,11.9,15a6.2,6.2,0,0,1,.3-6.4,8.9,8.9,0,0,1,6.4,2.9,15.1,15.1,0,0,1,5.4-.8,17.1,17.1,0,0,1,5.4.7,9,9,0,0,1,6.4-2.8,6.5,6.5,0,0,1,.4,6.4A10.7,10.7,0,0,1,39,22.6C39,28,35.3,32,28.5,33.2a5.4,5.4,0,0,1,.5,2.9v6.2a1.8,1.8,0,0,0,1.9,1.8A21.7,21.7,0,0,0,24,1.9Z"/></g></g></svg><!--github--></a>
+          <div style="width: 11px;height: 11px;"></div>
+          <a href="https://space.bilibili.com/3546635246242772" width="32" height="32" class="block_border" title="bilibili"><svg alt="bilibili" width="32" height="32" height="1em" style="flex:none;line-height:1" viewBox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M4.977 3.561a1.31 1.31 0 111.818-1.884l2.828 2.728c.08.078.149.163.205.254h4.277a1.32 1.32 0 01.205-.254l2.828-2.728a1.31 1.31 0 011.818 1.884L17.82 4.66h.848A5.333 5.333 0 0124 9.992v7.34a5.333 5.333 0 01-5.333 5.334H5.333A5.333 5.333 0 010 17.333V9.992a5.333 5.333 0 015.333-5.333h.781L4.977 3.56zm.356 3.67a2.667 2.667 0 00-2.666 2.667v7.529a2.667 2.667 0 002.666 2.666h13.334a2.667 2.667 0 002.666-2.666v-7.53a2.667 2.667 0 00-2.666-2.666H5.333zm1.334 5.192a1.333 1.333 0 112.666 0v1.192a1.333 1.333 0 11-2.666 0v-1.192zM16 11.09c-.736 0-1.333.597-1.333 1.333v1.192a1.333 1.333 0 102.666 0v-1.192c0-.736-.597-1.333-1.333-1.333z"></path></svg><!--bilibili--></a>
+        </div>
+      </div>
+    </div>
+  </header>
+  <br>
+  <main class="block" style="display: block;padding:25px;border-radius: 25px;border: 1px solid;" role="main">
+    <div style="display: flex;margin-top: 3px;margin-bottom: 25px;">
+      <button id="back_button" class="block_border" style="margin-left: 16px;margin-right: 16px;"><a style="font-size: 1.125rem;">←</a></button>
+      <input type="text" id="search_input" class="block_border" placeholder="搜索文章">
+      <button id="theme" class="block_border" style="margin-left: 16px;margin-right: 16px;white-space: nowrap;" onclick="change_theme()">☀/☾</button>
+    </div>
+    <div style="margin-top: 11px;margin-bottom: 25px;border-top: 1px solid"></div>
+    <div id="bloglist">
+      <div id="blog_all_card"></div>
+    </div>
+    <div id="blog_article" style="display: none;">
+      <h3 id="article_title"  style="border-bottom: 1px solid rgba(125,125,125,0.5)"></h3>
+      <article id="blog_content"></article>
+    </div>
+  </main>
+  <script>
+    var body = document.getElementsByTagName('body')[0];
+      if(matchMedia('(prefers-color-scheme: dark)').matches) {
+        body.className = 'dark';
+      } else {
+      body.className = 'light';
+      }
+    function change_theme() {
+      if (body.className === 'light') {
+        body.className = 'dark';
+      } else {
+      body.className = 'light';
+      }
+    }
+  </script>
+  <script>
+    var blog_all = {};
+    document.addEventListener('DOMContentLoaded', function() {render_blog_card();document.getElementById('back_button').addEventListener('click', show_blog_list);start_search();});
+    function render_blog_card(filter_blog_names) {
+      var blog_all_card = document.getElementById('blog_all_card');
+      blog_all_card.innerHTML = '';
+      var blog_file_names;
+      if (Array.isArray(filter_blog_names)) {
+        blog_file_names = filter_blog_names;
+      } else {
+        blog_file_names = Object.keys(blog_all);
+      }
+      for (var i = 0; i < blog_file_names.length; i++) {
+        var blog_file_name = blog_file_names[i];
+        if (!blog_all.hasOwnProperty(blog_file_name)) continue;
+        var meta = blog_all[blog_file_name];
+        var card = document.createElement('button');
+        card.className = 'blog-card';
+        card.innerHTML = '<h3>' + blog_file_name.replace('.md', '') + '</h3>' + '</div>' + '<p>' + (meta.content ? meta.content.substring(0, 60) : '') + '...</p>';
+        card.addEventListener('click', (function(blog_file_name, content) { return function() { show_blog_article(blog_file_name, content); }; })(blog_file_name, meta.content));
+        blog_all_card.appendChild(card);
+      }
+    }
+    function show_blog_article(blog_file_name, content) {
+        document.getElementById('bloglist').style.display = 'none';
+        document.getElementById('blog_article').style.display = 'block';
+        document.getElementById('article_title').textContent = blog_file_name.replace('.md', '');
+        document.getElementById('blog_content').innerHTML = marked.parse(content);
+    }
+    function show_blog_list() {
+        document.getElementById('bloglist').style.display = 'block';
+        document.getElementById('blog_article').style.display = 'none';
+    }
+    function start_search() {
+      var search_input = document.getElementById('search_input');
+      function find_blog_article() {
+        var keyword = search_input.value.toLowerCase().trim();
+        if (!keyword) {render_blog_card();return;}
+        var matched = [];
+        for (var blog_file_name in blog_all) {
+          if (!blog_all.hasOwnProperty(blog_file_name)) continue;
+          var displayName = blog_file_name.replace('.md', '').toLowerCase();
+          if (displayName.indexOf(keyword) !== -1) matched.push(blog_file_name);
+        }
+        render_blog_card(matched);
+      }
+      search_input.addEventListener('input', find_blog_article);
+    }
+    function load_blog_article() {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'https://api.github.com/repos/oneblockh/oneblockh.github.io/contents/backup', true);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    var files = JSON.parse(xhr.responseText);
+                    var i = 0;
+                    function load_next_blog_article() {
+                        if (i >= files.length) {render_blog_card();return;}
+                        var file = files[i];
+                        i++;
+                        if (file.name && file.name.length > 3 && file.name.substr(file.name.length - 3) === '.md') {
+                            var contentXhr = new XMLHttpRequest();
+                            contentXhr.open('GET', file.download_url, true);
+                            contentXhr.onreadystatechange = function() {
+                              if (contentXhr.readyState === 4) {if (contentXhr.status === 200) {blog_all[file.name] = {content: contentXhr.responseText};}load_next_blog_article();}
+                          };
+                          contentXhr.send();
+                        } 
+                        else {load_next_blog_article();}
+                    }
+                    load_next_blog_article();
+                } 
+                else {console.error('error', xhr.statusText);}
+            }
+        };
+        xhr.send();
+    }
+    window.addEventListener('load', load_blog_article);
+  </script>
+<br>
+<footer style="width: 111px;margin: 0 auto 0;padding:8px;" role="contentinfo">by_oneblockh</footer>
+</body>
+</html>
