@@ -4,38 +4,37 @@
     *{transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);}
     body,body.light {background-color: #ababab;color: #000000;}
     body.dark {background-color: #20262c;color: #ffffff;}
-    .block,body.light .block{backdrop-filter:blur(2.5px) brightness(100%) saturate(125%) url(#glass);border: 1px solid rgba(0, 0, 0, 0.8);}
-    body.dark .block{border: 1px solid rgba(255, 255, 255, 0.8);}
+    .block_main,body.light .block_main{backdrop-filter:blur(2.5px) brightness(100%) saturate(125%) url(#glass);border: 1px solid rgba(0, 0, 0, 0.8);}
+    body.dark .block_main{border: 1px solid rgba(255, 255, 255, 0.8);}
     .block_border{border-radius: 25px;border: 1px solid transparent;padding: 3px;}
     .block_border:hover,body.light .block_border:hover{border-radius: 25px;border: 1px solid #000000;box-shadow: 11px 8px 25px 11px rgba(225, 225, 225, 0.5);}
     body.dark .block_border:hover{border: 1px solid #ffffff;}
-    #blog_all_card {display: grid;grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));gap: 1.25rem;}
-    .blog-card,body.light .blog-card{background-color: transparent;border-radius: 25px;padding: 1.25rem;border: 1px solid #000000;overflow: hidden;}
-    body.dark .blog-card {border: 1px solid #ffffff;}
-    .blog-card:hover{box-shadow: 11px 8px 25px 11px rgba(225, 225, 225, 0.5);}
-    .blog-card h3,body.light .blog-card h3  {bottom: 0.5rem;margin:0;text-align: left;color:#000000;}
-    .blog-card p,body.light .blog-card p {font-size: 0.9rem;text-align: left;color:#000000;}
-    body.dark .blog-card h3,body.dark .blog-card p{color: #ffffff;}
-    #theme,body.light #theme, #back_button,body.light #back_button{background-color: transparent;border-radius: 25px;color: #000000;border: 1px solid #000000;padding: 0 8px;}
-    body.dark #theme{color: #ffffff;border: 1px solid #ffffff;}
-    #search_input,body.light #search_input{width:95%;max-width:500px;min-width: 125px;background-color: transparent;padding: 0.5rem 1rem;display: block;margin: 0 auto;border-radius: 25px;border: 1px solid #000000;}    
-    body.dark #back_button,body.dark #search_input {border: 1px solid #ffffff;color: #ffffff;}
+    #blog_list_information,body.light #blog_list_information{background-color: transparent;border-radius: 25px;padding: 16px;width: 100%;margin-top: 16px;border: 1px solid #000000;overflow: hidden;}
+    body.dark #blog_list_information {border: 1px solid #ffffff;}
+    #blog_list_information:hover{box-shadow: 11px 8px 25px 11px rgba(225, 225, 225, 0.5);}
+    #blog_list_information h3,body.light #blog_list_information h3  {bottom: 8px;margin:0;text-align: left;color:#000000;}
+    #blog_list_information p,body.light #blog_list_information p {font-size: 12px;text-align: left;color:#000000;}
+    body.dark #blog_list_information h3,body.dark #blog_list_information p{color: #ffffff;}
+    #theme_mode,body.light #theme_mode, #back_button,body.light #back_button{background-color: transparent;border-radius: 25px;color: #000000;border: 1px solid #000000;padding: 0 8px;}
+    body.dark #theme_mode{color: #ffffff;border: 1px solid #ffffff;}
+    #search_input_bar,body.light #search_input_bar{width:95%;max-width:500px;min-width: 125px;background-color: transparent;padding: 8px 16px;display: block;margin: 0 auto;border-radius: 25px;border: 1px solid #000000;}    
+    body.dark #back_button,body.dark #search_input_bar {border: 1px solid #ffffff;color: #ffffff;}
     svg,body.light svg{fill: #000000;}
     body.dark svg{fill:#ffffff;}
-    #blog_content blockquote,body.light #blog_content blockquote{border-left: 3px solid #000000;padding-left: 1rem;margin: 1.25rem 0;}
+    #blog_content blockquote,body.light #blog_content blockquote{border-left: 3px solid #000000;padding-left: 16px;margin: 20px 0;}
     body.dark #blog_content blockquote {border-left: 3px solid #ffffff;}
-    #blog_content pre {background: rgba(96, 102, 101, 0.5);color: #f8fafc;padding: 1rem;border-radius: 8px;overflow-x: auto;margin: 1.25rem 0;}
+    #blog_content pre {background: rgba(96, 102, 101, 0.5);color: #f8fafc;padding: 16px;border-radius: 8px;overflow-x: auto;margin: 20px 0;}
     table,body.light table{border: 1px solid #000000;border-radius: 11px;}
     th, td ,body.light th,body.light td {border: 1px solid #000000;padding: 16px;border-radius: 8px;}
     body.dark table ,body.dark th,body.dark td{border: 1px solid #ffffff;}
   </style>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/marked@4.2.5/marked.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.2.5/marked.min.js"></script>
   <svg style="display: none"><filter id="glass"><feTurbulence type="turbulence" baseFrequency="0.00125" numOctaves="2" result="noise" /><feDisplacementMap in="SourceGraphic" in2="noise" scale="77" /></filter></svg>
 </head>
 <body>
   <header role="banner">
     <h3 style="margin-top: 25px;padding:8px;" align="center">oneblockh's blog</h3>
-    <div class="block" style="display:flex;margin-top: 25px;padding:16px;border-radius: 25px;">
+    <div class="block_main" style="display:flex;margin-top: 25px;padding:16px;border-radius: 25px;">
       <img alt="oneblockh" width="100px" height="100px" src="https://avatars.githubusercontent.com/u/189672981?v=4&size=64" style="border-radius: 52px;vertical-align:middle;border: 1px solid rgba(125,125,125,0.5);">
       <div style="width: 8px;height: 3px;"></div>
       <div style="display:inline-block;vertical-align:middle;text-align:left;">
@@ -50,11 +49,11 @@
     </div>
   </header>
   <br>
-  <main class="block" style="display: block;padding:25px;border-radius: 25px;margin-top: 11px;" role="main">
+  <main class="block_main" style="display: block;padding:25px;border-radius: 25px;margin-top: 11px;" role="main">
     <div style="display: flex;margin-top: 3px;margin-bottom: 25px;">
       <button id="back_button" class="block_border" style="margin-left: 16px;margin-right: 16px;"><a style="font-size: 1.125rem;">←</a></button>
-      <input type="text" id="search_input" class="block_border" placeholder="搜索文章">
-      <button id="theme" class="block_border" style="margin-left: 16px;margin-right: 16px;white-space: nowrap;" onclick="change_theme()">☀/☾</button>
+      <input type="text" id="search_input_bar" class="block_border" placeholder="搜索文章">
+      <button id="theme_mode" class="block_border" style="margin-left: 16px;margin-right: 16px;white-space: nowrap;" onclick="change_theme()">☀/☾</button>
     </div>
     <div id="bloglist">
       <div id="blog_all_card"></div>
@@ -96,8 +95,8 @@
         if (!blog_all.hasOwnProperty(blog_file_name)) continue;
         var meta = blog_all[blog_file_name];
         var card = document.createElement('button');
-        card.className = 'blog-card';
-        card.innerHTML = '<h3>' + blog_file_name.replace('.md', '') + '</h3>' + '</div>' + '<p>' + (meta.content ? meta.content.substring(0, 60) : '') + '...</p>';
+        card.id = 'blog_list_information';
+        card.innerHTML = '<h3>' + blog_file_name.replace('.md', '') + '</h3>' + '<p>' + (meta.content ? meta.content.substring(0, 60) : '') + '...</p>';
         card.addEventListener('click', (function(blog_file_name, content) { return function() { show_blog_article(blog_file_name, content); }; })(blog_file_name, meta.content));
         blog_all_card.appendChild(card);
       }
@@ -113,9 +112,9 @@
         document.getElementById('blog_article').style.display = 'none';
     }
     function start_search() {
-      var search_input = document.getElementById('search_input');
+      var search_input_bar = document.getElementById('search_input_bar');
       function find_blog_article() {
-        var keyword = search_input.value.toLowerCase().trim();
+        var keyword = search_input_bar.value.toLowerCase().trim();
         if (!keyword) {render_blog_card();return;}
         var matched = [];
         for (var blog_file_name in blog_all) {
@@ -125,7 +124,7 @@
         }
         render_blog_card(matched);
       }
-      search_input.addEventListener('input', find_blog_article);
+      search_input_bar.addEventListener('input', find_blog_article);
     }
     function load_blog_article() {
         var xhr = new XMLHttpRequest();
