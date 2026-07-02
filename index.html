@@ -2,34 +2,26 @@
 <head>
   <style>
     *{transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);}
-    body,body.light {background-color: #ababab;color: #000000;}
-    body.dark {background-color: #20262c;color: #ffffff;}
-    .block_main,body.light .block_main{backdrop-filter:blur(2.5px) brightness(100%) saturate(125%) url(#glass);border: 1px solid rgba(0, 0, 0, 0.8);}
-    body.dark .block_main{border: 1px solid rgba(255, 255, 255, 0.8);}
+    :root{--background-color-beautiful: #ababab;--text-color_and_line-color:#000000;}
+    @media (prefers-color-scheme: dark) {:root{--background-color-beautiful: #20262c;--text-color_and_line-color:#ffffff;}}
+    body{background-color: var(--background-color-beautiful);color:var(--text-color_and_line-color)}
+    .block_main{backdrop-filter:blur(2.5px) brightness(100%) saturate(125%);border: 1px solid var(--text-color_and_line-color)}
     .block_border{border-radius: 25px;border: 1px solid transparent;padding: 3px;}
-    .block_border:hover,body.light .block_border:hover{border-radius: 25px;border: 1px solid #000000;box-shadow: 11px 8px 25px 11px rgba(225, 225, 225, 0.5);}
-    body.dark .block_border:hover{border: 1px solid #ffffff;}
-    #blog_list_information,body.light #blog_list_information{background-color: transparent;border-radius: 25px;padding: 16px;width: 100%;margin-top: 16px;border: 1px solid #000000;overflow: hidden;}
-    body.dark #blog_list_information {border: 1px solid #ffffff;}
-    #blog_list_information:hover{box-shadow: 11px 8px 25px 11px rgba(225, 225, 225, 0.5);}
-    #blog_list_information h3,body.light #blog_list_information h3  {bottom: 8px;margin:0;text-align: left;color:#000000;}
-    #blog_list_information p,body.light #blog_list_information p {font-size: 12px;text-align: left;color:#000000;}
-    body.dark #blog_list_information h3,body.dark #blog_list_information p{color: #ffffff;}
-    #theme_mode,body.light #theme_mode, #back_button,body.light #back_button{background-color: transparent;border-radius: 25px;color: #000000;border: 1px solid #000000;padding: 0 8px;}
-    body.dark #theme_mode{color: #ffffff;border: 1px solid #ffffff;}
-    #search_input_bar,body.light #search_input_bar{width:95%;max-width:500px;min-width: 125px;background-color: transparent;padding: 8px 16px;display: block;margin: 0 auto;border-radius: 25px;border: 1px solid #000000;}    
-    body.dark #back_button,body.dark #search_input_bar {border: 1px solid #ffffff;color: #ffffff;}
-    svg,body.light svg{fill: #000000;}
-    body.dark svg{fill:#ffffff;}
-    #blog_content blockquote,body.light #blog_content blockquote{border-left: 3px solid #000000;padding-left: 16px;margin: 20px 0;}
-    body.dark #blog_content blockquote {border-left: 3px solid #ffffff;}
+    #blog_list_information{background-color: transparent;border-radius: 25px;padding: 16px;width: 100%;margin-top: 19px;border: 1px solid var(--text-color_and_line-color);overflow: hidden;}
+    .block_border:hover,#blog_list_information:hover{border: 1px solid var(--text-color_and_line-color);box-shadow: 3px 1px 7px 8px rgba(225, 225, 225, 0.5);}
+    #blog_list_information h3{bottom: 8px;margin:0;text-align: left;color:var(--text-color_and_line-color);}
+    #blog_list_information p{text-align: left;color:var(--text-color_and_line-color);}
+    #back_button{background-color: transparent;border-radius: 25px;color: var(--text-color_and_line-color);border: 1px solid var(--text-color_and_line-color);padding: 0 8px;}
+    #search_input_bar{flex:1;min-width: 125px;background-color: transparent;padding: 8px 16px;display: block;color:var(--text-color_and_line-color);margin: 0 auto;border-radius: 25px;border: 1px solid var( --text-color_and_line-color);}    
+    svg{fill:var(--text-color_and_line-color);}
+    #blog_content blockquote{border-left: 3px solid #000000;padding-left: 16px;margin: 20px 0;}
     #blog_content pre {background: rgba(96, 102, 101, 0.5);color: #f8fafc;padding: 16px;border-radius: 8px;overflow-x: auto;margin: 20px 0;}
-    table,body.light table{border: 1px solid #000000;border-radius: 11px;}
-    th, td ,body.light th,body.light td {border: 1px solid #000000;padding: 16px;border-radius: 8px;}
-    body.dark table ,body.dark th,body.dark td{border: 1px solid #ffffff;}
+    table{border: 1px solid var(--text-color_and_line-color);border-radius: 11px;}
+    th, td{border: 1px solid var(--text-color_and_line-color);padding: 16px;border-radius: 8px;}
   </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/css-vars-ponyfill@2"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.2.5/marked.min.js"></script>
-  <svg style="display: none"><filter id="glass"><feTurbulence type="turbulence" baseFrequency="0.00125" numOctaves="2" result="noise" /><feDisplacementMap in="SourceGraphic" in2="noise" scale="77" /></filter></svg>
+  <script>cssVars();</script>
 </head>
 <body>
   <header role="banner">
@@ -51,39 +43,23 @@
   <br>
   <main class="block_main" style="display: block;padding:25px;border-radius: 25px;margin-top: 11px;" role="main">
     <div style="display: flex;margin-top: 3px;margin-bottom: 25px;">
-      <button id="back_button" class="block_border" style="margin-left: 16px;margin-right: 16px;"><a style="font-size: 1.125rem;">←</a></button>
+      <button id="back_button" class="block_border" style="margin-left: 16px;margin-right: 16px;">
+        <a style="font-size: 1.125rem;">←</a>
+      </button>
       <input type="text" id="search_input_bar" class="block_border" placeholder="搜索文章">
-      <button id="theme_mode" class="block_border" style="margin-left: 16px;margin-right: 16px;white-space: nowrap;" onclick="change_theme()">☀/☾</button>
     </div>
-    <div id="bloglist">
-      <div id="blog_all_card"></div>
-    </div>
+    <div id="blog_all_list"></div>
     <div id="blog_article" style="display: none;">
-      <h3 id="article_title"  style="border-bottom: 1px solid rgba(125,125,125,0.5)"></h3>
+      <h3 id="article_title" style="border-bottom: 1px solid rgba(125,125,125,0.5)"></h3>
       <article id="blog_content"></article>
     </div>
   </main>
   <script>
-    var body = document.getElementsByTagName('body')[0];
-      if(matchMedia('(prefers-color-scheme: dark)').matches) {
-        body.className = 'dark';
-      } else {
-      body.className = 'light';
-      }
-    function change_theme() {
-      if (body.className === 'light') {
-        body.className = 'dark';
-      } else {
-      body.className = 'light';
-      }
-    }
-  </script>
-  <script>
     var blog_all = {};
-    document.addEventListener('DOMContentLoaded', function() {render_blog_card();document.getElementById('back_button').addEventListener('click', show_blog_list);start_search();});
-    function render_blog_card(filter_blog_names) {
-      var blog_all_card = document.getElementById('blog_all_card');
-      blog_all_card.innerHTML = '';
+    document.addEventListener('DOMContentLoaded', function() {render_blog_list();document.getElementById('back_button').addEventListener('click', show_blog_list);start_search();});
+    function render_blog_list(filter_blog_names) {
+      var blog_all_list = document.getElementById('blog_all_list');
+      blog_all_list.innerHTML = '';
       var blog_file_names;
       if (Array.isArray(filter_blog_names)) {
         blog_file_names = filter_blog_names;
@@ -94,35 +70,35 @@
         var blog_file_name = blog_file_names[i];
         if (!blog_all.hasOwnProperty(blog_file_name)) continue;
         var meta = blog_all[blog_file_name];
-        var card = document.createElement('button');
-        card.id = 'blog_list_information';
-        card.innerHTML = '<h3>' + blog_file_name.replace('.md', '') + '</h3>' + '<p>' + (meta.content ? meta.content.substring(0, 60) : '') + '...</p>';
-        card.addEventListener('click', (function(blog_file_name, content) { return function() { show_blog_article(blog_file_name, content); }; })(blog_file_name, meta.content));
-        blog_all_card.appendChild(card);
+        var blog_list_start = document.createElement('button');
+        blog_list_start.id = 'blog_list_information';
+        blog_list_start.innerHTML = '<h3>' + blog_file_name.replace('.md', '') + '</h3>' + '<p>' + (meta.content ? meta.content.substring(0, 60) : '') + '...</p>';
+        blog_list_start.addEventListener('click', (function(blog_file_name, content) { return function() { show_blog_article(blog_file_name, content); }; })(blog_file_name, meta.content));
+        blog_all_list.appendChild(blog_list_start);
       }
     }
     function show_blog_article(blog_file_name, content) {
-        document.getElementById('bloglist').style.display = 'none';
+        document.getElementById('blog_all_list').style.display = 'none';
         document.getElementById('blog_article').style.display = 'block';
         document.getElementById('article_title').textContent = blog_file_name.replace('.md', '');
         document.getElementById('blog_content').innerHTML = marked.parse(content);
     }
     function show_blog_list() {
-        document.getElementById('bloglist').style.display = 'block';
+        document.getElementById('blog_all_list').style.display = 'block';
         document.getElementById('blog_article').style.display = 'none';
     }
     function start_search() {
       var search_input_bar = document.getElementById('search_input_bar');
       function find_blog_article() {
         var keyword = search_input_bar.value.toLowerCase().trim();
-        if (!keyword) {render_blog_card();return;}
+        if (!keyword) {render_blog_list();return;}
         var matched = [];
         for (var blog_file_name in blog_all) {
           if (!blog_all.hasOwnProperty(blog_file_name)) continue;
           var displayName = blog_file_name.replace('.md', '').toLowerCase();
           if (displayName.indexOf(keyword) !== -1) matched.push(blog_file_name);
         }
-        render_blog_card(matched);
+        render_blog_list(matched);
       }
       search_input_bar.addEventListener('input', find_blog_article);
     }
@@ -135,7 +111,7 @@
                     var files = JSON.parse(xhr.responseText);
                     var i = 0;
                     function load_next_blog_article() {
-                        if (i >= files.length) {render_blog_card();return;}
+                        if (i >= files.length) {render_blog_list();return;}
                         var file = files[i];
                         i++;
                         if (file.name && file.name.length > 3 && file.name.substr(file.name.length - 3) === '.md') {
