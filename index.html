@@ -1,23 +1,23 @@
 <!DOCTYPE html><html lang="zh"><meta http-equiv="content-type" content="text/html; charset=UTF-8"><title>oneblockh</title><meta name="darkreader-lock"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="robots" content="noindex,nofollow">
 <head>
   <style>
-    body,button,a,h3,p{transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);}
-    :root{--background-color-beautiful: #ababab;--text-color_and_line-color:#000000;}
-    @media (prefers-color-scheme: dark) {:root{--background-color-beautiful: #20262c;--text-color_and_line-color:#ffffff;}}
-    body{background-color: var(--background-color-beautiful);color:var(--text-color_and_line-color)}
-    .block_main{backdrop-filter:blur(2.5px) brightness(100%) saturate(125%);border: 1px solid var(--text-color_and_line-color)}
+    body,button,a,h3,p,input{transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);}
+    :root{--background-color: #ababab;--text_and_line-color:#000000;}
+    @media (prefers-color-scheme: dark) {:root{--background-color: #20262c;--text_and_line-color:#ffffff;}}
+    body{background-color: var(--background-color);color:var(--text_and_line-color)}
+    .block_main{backdrop-filter:blur(2.5px) saturate(125%);border: 1px solid var(--text_and_line-color)}
     .block_border{border-radius: 25px;border: 1px solid transparent;padding: 3px;}
-    #blog_list_information{background-color: transparent;border-radius: 25px;padding: 16px;width: 100%;margin-top: 19px;border: 1px solid var(--text-color_and_line-color);overflow: hidden;}
-    .block_border:hover,#blog_list_information:hover{border: 1px solid var(--text-color_and_line-color);box-shadow: 3px 1px 7px 8px rgba(225, 225, 225, 0.5);}
-    #blog_list_information h3{bottom: 8px;margin:0;text-align: left;color:var(--text-color_and_line-color);}
-    #blog_list_information p{text-align: left;color:var(--text-color_and_line-color);}
-    #back_button{background-color: transparent;border-radius: 25px;color: var(--text-color_and_line-color);border: 1px solid var(--text-color_and_line-color);padding: 0 8px;}
-    #search_input_bar{flex:1;min-width: 125px;background-color: transparent;padding: 8px 16px;display: block;color:var(--text-color_and_line-color);margin: 0 auto;border-radius: 25px;border: 1px solid var( --text-color_and_line-color);}    
-    svg{fill:var(--text-color_and_line-color);}
-    #blog_content blockquote{border-left: 3px solid var(--text-color_and_line-color);padding-left: 16px;margin: 20px 0;}
+    #blog_list_information{background-color: transparent;border-radius: 25px;padding: 16px;width: 100%;margin-top: 19px;border: 1px solid var(--text_and_line-color);overflow: hidden;}
+    .block_border:hover,#blog_list_information:hover{border: 1px solid var(--text_and_line-color);box-shadow: 0px 0px 11px 8px rgba(225, 225, 225, 0.5);}
+    #blog_list_information h3{bottom: 8px;margin:0;text-align: left;color:var(--text_and_line-color);}
+    #blog_list_information p{text-align: left;color:var(--text_and_line-color);}
+    #back_button{background-color: transparent;border-radius: 25px;color: var(--text_and_line-color);border: 1px solid var(--text_and_line-color);padding: 0 8px;}
+    #search_input_bar{flex:1;min-width: 125px;background-color: transparent;padding: 8px 16px;display: block;color:var(--text_and_line-color);margin: 0 auto;border-radius: 25px;border: 1px solid var( --text_and_line-color);}    
+    svg{fill:var(--text_and_line-color);}
+    #blog_content blockquote{border-left: 3px solid var(--text_and_line-color);padding-left: 16px;margin: 20px 0;}
     #blog_content pre {background: rgba(96, 102, 101, 0.5);color: #f8fafc;padding: 16px;border-radius: 8px;overflow-x: auto;margin: 20px 0;}
-    table,th,td{border: 1px solid var(--text-color_and_line-color);border-radius: 11px;border: 1px solid var(--text-color_and_line-color);padding: 16px;}
-    table{padding: 3px;}
+    table,th,td{border: 1px solid var(--text_and_line-color);border-radius: 11px;border: 1px solid var(--text_and_line-color);padding: 16px;}
+    table{border: 1px solid var(--text_and_line-color);border-radius: 11px;border: 1px solid var(--text_and_line-color);padding: 3px;}
   </style>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/css-vars-ponyfill@2"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.2.5/marked.min.js"></script>
