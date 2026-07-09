@@ -7,15 +7,15 @@
     body{background-color: var(--background-color);color:var(--main-color)}
     .block_main{border: 1px solid var(--main-color);}
     .block_border{border-radius: 25px;border: 1px solid transparent;padding: 3px;}
-    #blog_list_information{background-color: transparent;border-radius: 25px;padding: 16px;width: 100%;margin-top: 19px;border: 1px solid rgba(125,125,125,0.8);overflow: hidden;}
-    .block_border:hover,#blog_list_information:hover{border: 1px solid var(--main-color);box-shadow: 0px 0px 9px 3px rgba(225, 225, 225, 0.5);}
-    #blog_list_information h3{bottom: 8px;margin:0;text-align: left;color:var(--main-color);}
-    #blog_list_information p{text-align: left;color:var(--main-color);}
+    #notes_list_information{background-color: transparent;border-radius: 25px;padding: 16px;width: 100%;margin-top: 19px;border: 1px solid rgba(125,125,125,0.8);overflow: hidden;}
+    .block_border:hover,#notes_list_information:hover{border: 1px solid var(--main-color);box-shadow: 0px 0px 9px 3px rgba(225, 225, 225, 0.5);}
+    #notes_list_information h3{bottom: 8px;margin:0;text-align: left;color:var(--main-color);}
+    #notes_list_information p{text-align: left;color:var(--main-color);}
     #back_button{background-color: transparent;border-radius: 25px;color: var(--main-color);border: 1px solid var(--main-color);padding: 0 8px;margin-left: 16px;margin-right: 16px;}
     #search_input_bar{flex:1;min-width: 125px;background-color: transparent;padding: 8px 16px;display: block;color:var(--main-color);border-radius: 25px;border: 1px solid var(--main-color);}    
     svg{fill:var(--main-color);}
-    #blog_content blockquote{border-left: 3px solid var(--main-color);padding-left: 16px;margin: 20px 0;}
-    #blog_content pre {background: rgba(96, 102, 101, 0.5);color: #f8fafc;padding: 16px;border-radius: 11px;overflow-x: auto;margin: 20px 0;}
+    #notes_content blockquote{border-left: 3px solid var(--main-color);padding-left: 16px;margin: 20px 0;}
+    #notes_content pre {background: rgba(96, 102, 101, 0.5);color: #f8fafc;padding: 16px;border-radius: 11px;overflow-x: auto;margin: 20px 0;}
     table{border: 1px solid var(--main-color);border-radius: 11px;}
     th,td{border: 1px solid var(--main-color);border-radius: 11px;padding: 9px;}
   </style>
@@ -25,7 +25,7 @@
 </head>
 <body>
   <header role="banner">
-    <h3 style="margin-top: 25px;padding:8px;" align="center">oneblockh's blog</h3>
+    <h3 style="margin-top: 25px;padding:8px;" align="center">oneblockh's notes</h3>
     <div class="block_main" style="display:flex;margin-top: 25px;padding:16px;border-radius: 25px;">
       <img alt="oneblockh" width="100px" height="100px" src="avatars.png" style="border-radius: 52px;vertical-align:middle;border: 1px solid rgba(125,125,125,0.5);">
       <div style="width: 8px;height: 3px;"></div>
@@ -48,90 +48,90 @@
       </button>
       <input type="text" id="search_input_bar" class="block_border" placeholder="搜索文章">
     </div>
-    <div id="blog_all_list"></div>
-    <div id="blog_article" style="display: none;">
+    <div id="notes_all_list"></div>
+    <div id="notes_article" style="display: none;">
       <h3 id="article_title" style="border-bottom: 1px solid rgba(125,125,125,0.5)"></h3>
-      <article id="blog_content"></article>
+      <article id="notes_content"></article>
     </div>
   </main>
   <script>
-    var blog_all = {};
-    document.addEventListener('DOMContentLoaded', function() {render_blog_list();document.getElementById('back_button').addEventListener('click', show_blog_list);start_search();});
-    function render_blog_list(filter_blog_names) {
-      var blog_all_list = document.getElementById('blog_all_list');
-      blog_all_list.innerHTML = '';
-      var blog_file_names;
-      if (Array.isArray(filter_blog_names)) {
-        blog_file_names = filter_blog_names;
+    var notes_all = {};
+    document.addEventListener('DOMContentLoaded', function() {render_notes_list();document.getElementById('back_button').addEventListener('click', show_notes_list);start_search();});
+    function render_notes_list(filter_notes_names) {
+      var notes_all_list = document.getElementById('notes_all_list');
+      notes_all_list.innerHTML = '';
+      var notes_file_names;
+      if (Array.isArray(filter_notes_names)) {
+        notes_file_names = filter_notes_names;
       } else {
-        blog_file_names = Object.keys(blog_all);
+        notes_file_names = Object.keys(notes_all);
       }
-      for (var i = 0; i < blog_file_names.length; i++) {
-        var blog_file_name = blog_file_names[i];
-        if (!blog_all.hasOwnProperty(blog_file_name)) continue;
-        var meta = blog_all[blog_file_name];
-        var blog_list_start = document.createElement('button');
-        blog_list_start.id = 'blog_list_information';
-        blog_list_start.innerHTML = '<h3>' + blog_file_name.replace('.md', '') + '</h3>' + '<p>' + (meta.content ? meta.content.substring(0, 60) : '') + '...</p>';
-        blog_list_start.addEventListener('click', (function(blog_file_name, content) { return function() { show_blog_article(blog_file_name, content); }; })(blog_file_name, meta.content));
-        blog_all_list.appendChild(blog_list_start);
+      for (var i = 0; i < notes_file_names.length; i++) {
+        var notes_file_name = notes_file_names[i];
+        if (!notes_all.hasOwnProperty(notes_file_name)) continue;
+        var meta = notes_all[notes_file_name];
+        var notes_list_start = document.createElement('button');
+        notes_list_start.id = 'notes_list_information';
+        notes_list_start.innerHTML = '<h3>' + notes_file_name.replace('.md', '') + '</h3>' + '<p>' + (meta.content ? meta.content.substring(0, 60) : '') + '...</p>';
+        notes_list_start.addEventListener('click', (function(notes_file_name, content) { return function() { show_notes_article(notes_file_name, content); }; })(notes_file_name, meta.content));
+        notes_all_list.appendChild(notes_list_start);
       }
     }
-    function show_blog_article(blog_file_name, content) {
-        document.getElementById('blog_all_list').style.display = 'none';
-        document.getElementById('blog_article').style.display = 'block';
-        document.getElementById('article_title').textContent = blog_file_name.replace('.md', '');
-        document.getElementById('blog_content').innerHTML = marked.parse(content);
+    function show_notes_article(notes_file_name, content) {
+        document.getElementById('notes_all_list').style.display = 'none';
+        document.getElementById('notes_article').style.display = 'block';
+        document.getElementById('article_title').textContent = notes_file_name.replace('.md', '');
+        document.getElementById('notes_content').innerHTML = marked.parse(content);
     }
-    function show_blog_list() {
-        document.getElementById('blog_all_list').style.display = 'block';
-        document.getElementById('blog_article').style.display = 'none';
+    function show_notes_list() {
+        document.getElementById('notes_all_list').style.display = 'block';
+        document.getElementById('notes_article').style.display = 'none';
     }
     function start_search() {
       var search_input_bar = document.getElementById('search_input_bar');
-      function find_blog_article() {
+      function find_notes_article() {
         var keyword = search_input_bar.value.toLowerCase().trim();
-        if (!keyword) {render_blog_list();return;}
+        if (!keyword) {render_notes_list();return;}
         var matched = [];
-        for (var blog_file_name in blog_all) {
-          if (!blog_all.hasOwnProperty(blog_file_name)) continue;
-          var displayName = blog_file_name.replace('.md', '').toLowerCase();
-          if (displayName.indexOf(keyword) !== -1) matched.push(blog_file_name);
+        for (var notes_file_name in notes_all) {
+          if (!notes_all.hasOwnProperty(notes_file_name)) continue;
+          var displayName = notes_file_name.replace('.md', '').toLowerCase();
+          if (displayName.indexOf(keyword) !== -1) matched.push(notes_file_name);
         }
-        render_blog_list(matched);
+        render_notes_list(matched);
       }
-      search_input_bar.addEventListener('input', find_blog_article);
+      search_input_bar.addEventListener('input', find_notes_article);
     }
-    function load_blog_article() {
+    function load_notes_article() {
         var xhr = new XMLHttpRequest();
-        xhr.open('GET', 'https://api.github.com/repos/oneblockh/oneblockh.github.io/contents/blog', true);
+        xhr.open('GET', 'https://api.github.com/repos/oneblockh/oneblockh.github.io/contents/notes', true);
         xhr.onreadystatechange = function() {
             if (xhr.readyState === 4) {
                 if (xhr.status === 200) {
                     var files = JSON.parse(xhr.responseText);
                     var i = 0;
-                    function load_next_blog_article() {
-                        if (i >= files.length) {render_blog_list();return;}
+                    function load_next_notes_article() {
+                        if (i >= files.length) {render_notes_list();return;}
                         var file = files[i];
                         i++;
                         if (file.name && file.name.length > 3 && file.name.substr(file.name.length - 3) === '.md') {
                             var contentXhr = new XMLHttpRequest();
                             contentXhr.open('GET', file.download_url, true);
                             contentXhr.onreadystatechange = function() {
-                              if (contentXhr.readyState === 4) {if (contentXhr.status === 200) {blog_all[file.name] = {content: contentXhr.responseText};}load_next_blog_article();}
+                              if (contentXhr.readyState === 4) {if (contentXhr.status === 200) {notes_all[file.name] = {content: contentXhr.responseText};}load_next_notes_article();}
                           };
                           contentXhr.send();
                         } 
-                        else {load_next_blog_article();}
+                        else {load_next_notes_article();}
                     }
-                    load_next_blog_article();
+                    load_next_notes_article();
                 } 
                 else {console.error('error', xhr.statusText);}
             }
         };
         xhr.send();
     }
-    window.addEventListener('load', load_blog_article);
+    window.addEventListener('load', load_notes_article);
   </script>
 <br>
 <footer style="width: 111px;margin: 0 auto 0;padding:8px;" role="contentinfo">by_oneblockh</footer>
