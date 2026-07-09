@@ -1,14 +1,14 @@
 <!DOCTYPE html><html lang="zh"><meta http-equiv="content-type" content="text/html; charset=UTF-8"><title>oneblockh</title><meta name="darkreader-lock"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="robots" content="noindex,nofollow">
 <head>
   <style>
-    body,button,a,h3,p,input{transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)}
+    body,button,a,h3,p,input{transition: all 0.5s cubic-bezier(0.5, 0.2, 0.99, 0.99)}
     :root{--background-color: #dadada;--main-color:#000000;}
     @media (prefers-color-scheme: dark) {:root{--background-color: #20262c;--main-color:#ffffff;}}
-    body{background-color: var(--background-color);color:var(--main-color)}
-    .block_main{border: 1px solid var(--main-color);}
+    body{background-color: var(--background-color);color:var(--main-color);background-image: url(background.webp);background-size: cover;background-repeat: repeat;}
+    .block_main{backdrop-filter:blur(5.2px) saturate(125%) url(#glass);box-shadow:0 0 0 2px rgba(199,199,199,0.39),0 16px 32px rgba(0,0,0,0.5), 0px -1px 1px rgba(255, 255, 255, 0.39),0px 1px 1px rgba(225, 225, 225, 0.39);}
     .block_border{border-radius: 25px;border: 1px solid transparent;padding: 3px;}
-    #blog_list_information{background-color: transparent;border-radius: 25px;padding: 16px;width: 100%;margin-top: 19px;border: 1px solid rgba(125,125,125,0.8);overflow: hidden;}
-    .block_border:hover,#blog_list_information:hover{border: 1px solid var(--main-color);box-shadow: 0px 0px 9px 3px rgba(225, 225, 225, 0.5);}
+    #blog_list_information{background-color: transparent;border-radius: 25px;padding: 16px;width: 100%;margin-top: 19px;border: 1px solid var(--main-color);overflow: hidden;}
+    .block_border:hover,#blog_list_information:hover{border: 1px solid var(--main-color);box-shadow: 0px 0px 11px 6px rgba(225, 225, 225, 0.5);}
     #blog_list_information h3{bottom: 8px;margin:0;text-align: left;color:var(--main-color);}
     #blog_list_information p{text-align: left;color:var(--main-color);}
     #back_button{background-color: transparent;border-radius: 25px;color: var(--main-color);border: 1px solid var(--main-color);padding: 0 8px;margin-left: 16px;margin-right: 16px;}
@@ -20,8 +20,9 @@
     th,td{border: 1px solid var(--main-color);border-radius: 11px;padding: 9px;}
   </style>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/css-vars-ponyfill@2"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.2.5/marked.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/marked@4.2.5/marked.min.js"></script>
   <script>cssVars();</script>
+  <svg style="display: none"><filter id="glass"><feTurbulence type="turbulence" baseFrequency="0.00225" numOctaves="2" result="noise" /><feDisplacementMap in="SourceGraphic" in2="noise" scale="77" /></filter></svg>
 </head>
 <body>
   <header role="banner">
@@ -41,7 +42,7 @@
     </div>
   </header>
   <br>
-  <main class="block_main"style="display: block;padding:25px;border-radius: 25px;margin-top: 11px;" role="main">
+  <main class="block_main" style="display: block;padding:25px;border-radius: 25px;margin-top: 11px;" role="main">
     <div style="display: flex;margin-top: 3px;margin-bottom: 25px;">
       <button id="back_button" class="block_border">
         <a style="font-size: 1.125rem;">←</a>
@@ -54,86 +55,71 @@
       <article id="blog_content"></article>
     </div>
   </main>
-  <script>
-    var blog_all = {};
-    document.addEventListener('DOMContentLoaded', function() {render_blog_list();document.getElementById('back_button').addEventListener('click', show_blog_list);start_search();});
-    function render_blog_list(filter_blog_names) {
-      var blog_all_list = document.getElementById('blog_all_list');
-      blog_all_list.innerHTML = '';
-      var blog_file_names;
-      if (Array.isArray(filter_blog_names)) {
-        blog_file_names = filter_blog_names;
-      } else {
-        blog_file_names = Object.keys(blog_all);
+  <script type="module">
+    const blogAll = {};
+    const renderBlogList = (filterBlogNames) => {
+      const blogAllList = document.getElementById('blog_all_list');
+      blogAllList.innerHTML = '';
+      const blogFileNames = Array.isArray(filterBlogNames)
+        ? filterBlogNames
+        : Object.keys(blogAll);
+      for (const blogFileName of blogFileNames) {
+        if (!Object.prototype.hasOwnProperty.call(blogAll, blogFileName)) continue;
+        const { content = '' } = blogAll[blogFileName];
+        const blogListItem = document.createElement('button');
+        blogListItem.id = 'blog_list_information';
+        blogListItem.innerHTML = `<h3>${blogFileName.replace('.md', '')}</h3><p>${content.slice(0, 60)}...</p>`;
+        blogListItem.addEventListener('click', () => showBlogArticle(blogFileName, content));
+        blogAllList.appendChild(blogListItem);
       }
-      for (var i = 0; i < blog_file_names.length; i++) {
-        var blog_file_name = blog_file_names[i];
-        if (!blog_all.hasOwnProperty(blog_file_name)) continue;
-        var meta = blog_all[blog_file_name];
-        var blog_list_start = document.createElement('button');
-        blog_list_start.id = 'blog_list_information';
-        blog_list_start.innerHTML = '<h3>' + blog_file_name.replace('.md', '') + '</h3>' + '<p>' + (meta.content ? meta.content.substring(0, 60) : '') + '...</p>';
-        blog_list_start.addEventListener('click', (function(blog_file_name, content) { return function() { show_blog_article(blog_file_name, content); }; })(blog_file_name, meta.content));
-        blog_all_list.appendChild(blog_list_start);
-      }
-    }
-    function show_blog_article(blog_file_name, content) {
-        document.getElementById('blog_all_list').style.display = 'none';
-        document.getElementById('blog_article').style.display = 'block';
-        document.getElementById('article_title').textContent = blog_file_name.replace('.md', '');
-        document.getElementById('blog_content').innerHTML = marked.parse(content);
-    }
-    function show_blog_list() {
-        document.getElementById('blog_all_list').style.display = 'block';
-        document.getElementById('blog_article').style.display = 'none';
-    }
-    function start_search() {
-      var search_input_bar = document.getElementById('search_input_bar');
-      function find_blog_article() {
-        var keyword = search_input_bar.value.toLowerCase().trim();
-        if (!keyword) {render_blog_list();return;}
-        var matched = [];
-        for (var blog_file_name in blog_all) {
-          if (!blog_all.hasOwnProperty(blog_file_name)) continue;
-          var displayName = blog_file_name.replace('.md', '').toLowerCase();
-          if (displayName.indexOf(keyword) !== -1) matched.push(blog_file_name);
+    };
+    const showBlogArticle = (blogFileName, content) => {
+      document.getElementById('blog_all_list').style.display = 'none';
+      document.getElementById('blog_article').style.display = 'block';
+      document.getElementById('article_title').textContent = blogFileName.replace('.md', '');
+      document.getElementById('blog_content').innerHTML = marked.parse(content);
+    };
+    const showBlogList = () => {
+      document.getElementById('blog_all_list').style.display = 'block';
+      document.getElementById('blog_article').style.display = 'none';
+    };
+    const startSearch = () => {
+      const searchInputBar = document.getElementById('search_input_bar');
+      const findBlogArticle = () => {
+        const keyword = searchInputBar.value.toLowerCase().trim();
+        if (!keyword) {
+          renderBlogList();
+          return;
         }
-        render_blog_list(matched);
-      }
-      search_input_bar.addEventListener('input', find_blog_article);
-    }
-    function load_blog_article() {
-      var xhr = new XMLHttpRequest();
-      xhr.open('GET', 'https://api.github.com/repos/oneblockh/oneblockh.github.io/contents/blog', true);
-      xhr.onreadystatechange = function() {
-        if (xhr.readyState === 4) {
-          if (xhr.status === 200) {
-            var files = JSON.parse(xhr.responseText);
-            var i = 0;
-            function load_next_blog_article() {
-              if (i >= files.length) {render_blog_list();return;}
-                var file = files[i];
-                i++;
-                if (file.name && file.name.length > 3 && file.name.substr(file.name.length - 3) === '.md') {
-                  var contentXhr = new XMLHttpRequest();
-                  contentXhr.open('GET', file.download_url, true);
-                  contentXhr.onreadystatechange = function() {
-                  if (contentXhr.readyState === 4) {if (contentXhr.status === 200) {blog_all[file.name] = {content: contentXhr.responseText};}load_next_blog_article();}
-                  };
-                contentXhr.send();
-                } 
-                else {load_next_blog_article();}
-            }
-            load_next_blog_article();
-          } 
-          else {console.error('error', xhr.statusText);}
-        }
+        const matched = Object.keys(blogAll).filter((blogFileName) => blogFileName.replace('.md', '').toLowerCase().includes(keyword),);
+        renderBlogList(matched);
       };
-      xhr.send();
-    }
-    window.addEventListener('load', load_blog_article);
+      searchInputBar.addEventListener('input', findBlogArticle);
+    };
+    const loadBlogArticle = async () => {
+      try {
+        const response = await fetch('https://api.github.com/repos/oneblockh/oneblockh.github.io/contents/blog');
+        if (!response.ok) throw new Error(response.statusText);
+        const files = await response.json();
+        const markdownFiles = files.filter((file) => file.name?.endsWith('.md'));
+        await Promise.all(
+          markdownFiles.map(async (file) => {
+            const contentResponse = await fetch(file.download_url);
+            if (!contentResponse.ok) return;
+            blogAll[file.name] = { content: await contentResponse.text() };
+          }),
+        );
+        renderBlogList();
+      } catch (error) {console.error('Load blog articles failed:', error);}
+    };
+    document.addEventListener('DOMContentLoaded', () => {
+      renderBlogList();
+      document.getElementById('back_button').addEventListener('click', showBlogList);
+      startSearch();
+      loadBlogArticle();
+    });
   </script>
 <br>
-<footer style="width: 111px;margin: 0 auto 0;padding:8px;" role="contentinfo">by_oneblockh</footer>
+<footer class="block_main" style="width:103px;margin: 0 auto 0;padding:8px;border-radius: 25px;" role="contentinfo">by_oneblockh</footer>
 </body>
 </html>
