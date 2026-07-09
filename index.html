@@ -11,7 +11,7 @@
     .block_border:hover,#blog_list_information:hover{border: 1px solid var(--main-color);box-shadow: 0px 0px 9px 3px rgba(225, 225, 225, 0.5);}
     #blog_list_information h3{bottom: 8px;margin:0;text-align: left;color:var(--main-color);}
     #blog_list_information p{text-align: left;color:var(--main-color);}
-    #back_button{background-color: transparent;border-radius: 25px;color: var(--main-color);border: 1px solid var(--main-color);padding: 0 8px;}
+    #back_button{background-color: transparent;border-radius: 25px;color: var(--main-color);border: 1px solid var(--main-color);padding: 0 8px;margin-left: 16px;margin-right: 16px;}
     #search_input_bar{flex:1;min-width: 125px;background-color: transparent;padding: 8px 16px;display: block;color:var(--main-color);border-radius: 25px;border: 1px solid var( --main-color);}    
     svg{fill:var(--main-color);}
     #blog_content blockquote{border-left: 3px solid var(--main-color);padding-left: 16px;margin: 20px 0;}
@@ -27,7 +27,7 @@
   <header role="banner">
     <h3 style="margin-top: 25px;padding:8px;" align="center">oneblockh's blog</h3>
     <div class="block_main" style="display:flex;margin-top: 25px;padding:16px;border-radius: 25px;">
-      <img alt="oneblockh" width="100px" height="100px" src="https://avatars.githubusercontent.com/u/189672981?v=4&size=64" style="border-radius: 52px;vertical-align:middle;border: 1px solid rgba(125,125,125,0.5);">
+      <img alt="oneblockh" width="100px" height="100px" src="avatars.png" style="border-radius: 52px;vertical-align:middle;border: 1px solid rgba(125,125,125,0.5);">
       <div style="width: 8px;height: 3px;"></div>
       <div style="display:inline-block;vertical-align:middle;text-align:left;">
         <h3 style="margin: 3px;">oneblockh</h3>
@@ -43,7 +43,7 @@
   <br>
   <main class="block_main" style="display: block;padding:25px;border-radius: 25px;margin-top: 11px;" role="main">
     <div style="display: flex;margin-top: 3px;margin-bottom: 25px;">
-      <button id="back_button" class="block_border" style="margin-left: 16px;margin-right: 16px;">
+      <button id="back_button" class="block_border">
         <a style="font-size: 1.125rem;">←</a>
       </button>
       <input type="text" id="search_input_bar" class="block_border" placeholder="搜索文章">
