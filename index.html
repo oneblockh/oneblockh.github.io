@@ -2,17 +2,17 @@
 <head>
   <style>
     body,button,a,h3,p,input{transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)}
-    :root{--background-color: #ababab;--main-color:#000000;}
+    :root{--background-color: #dadada;--main-color:#000000;}
     @media (prefers-color-scheme: dark) {:root{--background-color: #20262c;--main-color:#ffffff;}}
     body{background-color: var(--background-color);color:var(--main-color)}
-    .block_main{border: 1px solid var(--main-color)}
+    .block_main{border: 1px solid var(--main-color);}
     .block_border{border-radius: 25px;border: 1px solid transparent;padding: 3px;}
-    #blog_list_information{background-color: transparent;border-radius: 25px;padding: 16px;width: 100%;margin-top: 19px;border: 1px solid var(--main-color);overflow: hidden;}
+    #blog_list_information{background-color: transparent;border-radius: 25px;padding: 16px;width: 100%;margin-top: 19px;border: 1px solid rgba(125,125,125,0.8);overflow: hidden;}
     .block_border:hover,#blog_list_information:hover{border: 1px solid var(--main-color);box-shadow: 0px 0px 9px 3px rgba(225, 225, 225, 0.5);}
     #blog_list_information h3{bottom: 8px;margin:0;text-align: left;color:var(--main-color);}
     #blog_list_information p{text-align: left;color:var(--main-color);}
     #back_button{background-color: transparent;border-radius: 25px;color: var(--main-color);border: 1px solid var(--main-color);padding: 0 8px;margin-left: 16px;margin-right: 16px;}
-    #search_input_bar{flex:1;min-width: 125px;background-color: transparent;padding: 8px 16px;display: block;color:var(--main-color);border-radius: 25px;border: 1px solid var( --main-color);}    
+    #search_input_bar{flex:1;min-width: 125px;background-color: transparent;padding: 8px 16px;display: block;color:var(--main-color);border-radius: 25px;border: 1px solid var(--main-color);}    
     svg{fill:var(--main-color);}
     #blog_content blockquote{border-left: 3px solid var(--main-color);padding-left: 16px;margin: 20px 0;}
     #blog_content pre {background: rgba(96, 102, 101, 0.5);color: #f8fafc;padding: 16px;border-radius: 11px;overflow-x: auto;margin: 20px 0;}
@@ -41,7 +41,7 @@
     </div>
   </header>
   <br>
-  <main class="block_main" style="display: block;padding:25px;border-radius: 25px;margin-top: 11px;" role="main">
+  <main class="block_main"style="display: block;padding:25px;border-radius: 25px;margin-top: 11px;" role="main">
     <div style="display: flex;margin-top: 3px;margin-bottom: 25px;">
       <button id="back_button" class="block_border">
         <a style="font-size: 1.125rem;">←</a>
