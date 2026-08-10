@@ -103,7 +103,7 @@
         const files = await response.json();
         const markdownFiles = files.filter((file) => file.name?.endsWith(".md"));
         await Promise.all(markdownFiles.map(async (file) => {
-            const contentResponse = await fetch(file.download_url);
+            const contentResponse = await fetch("https://oneblockh.github.io/"+file.path);
             if (!contentResponse.ok) return;
             blogAll[file.name] = {content: await contentResponse.text()};
           }),
